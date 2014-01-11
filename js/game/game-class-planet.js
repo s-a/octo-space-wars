@@ -15,17 +15,29 @@ var Planet = function  (config) {
 		return config.name || "P-" + this.config.parent + "/" + this.id;
 	}
 
-	if (!config.isSun){
-		var shape = new THREE.TextGeometry(config.name || this.getName() + " * " + this.units, {
+	var shape,cylBleu;
+    cylBleu = new THREE.MeshBasicMaterial({color: this.player.color.hex(), opacity: 0.8 }); 
+
+	this.setText = function  () {
+		shape = new THREE.TextGeometry(this.getName() + " * " + this.units, {
 			font: 'helvetiker', 
 			size: 6,  
 			bevelEnabled : false,
 			height : 0 
 		});
+		if (this.text) {
+			var oldpos = this.text.position;
+			gameEngine.scene.remove(this.text);
+		}
+	  	var newText = new THREE.Mesh(shape, cylBleu);
+	  	if (oldpos) newText.position.set(oldpos.x, oldpos.y, oldpos.z);
+	  	if (gameEngine.camera) newText.lookAt(gameEngine.camera.position);
+	  	this.text = newText;
+ 	  	//textMesh.userData = this;
+	}
 
-	    var cylBleu = new THREE.MeshBasicMaterial({color: this.player.color.hex(), opacity: 0.8 }); 
-	  	var textMesh = new THREE.Mesh(shape, cylBleu);
-	  	//textMesh.userData = this;
+	if (!config.isSun){
+		this.setText();
 	}
 
 
@@ -109,19 +121,21 @@ var Planet = function  (config) {
 		this.planet.position.set( x, y, z );
 		this.atmosphere.position.set( x, y, z );
 		if (this.text){
-			this.text.lookAt(gameEngine.camera.position);
 			this.text.position.set( x - config.size, y - (config.size*1.5), z - config.size );
+			this.text.lookAt(gameEngine.camera.position);
 		}
 	}
 
 	this.planet = planet;
 	this.atmosphere = atmosphere;
-	this.text = textMesh;
+ 
 
 	this.render = function  (scene) {
 	  	scene.add( this.planet );
 	 	scene.add( this.atmosphere );
-	 	if (this.text) scene.add( this.text );
+ 		scene.remove(this.text);
+ 		scene.add(this.text);	
+
 		material.userData = {planet:this};
 		surface.userData = {planet:this};
 

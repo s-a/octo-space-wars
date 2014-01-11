@@ -1,5 +1,6 @@
 var Flyer = function(gameEngine, swarm, config, target) {
 
+	this.config=config;
 
 	function detectCollision() {
 	  var vector = target.clone().subSelf( source.position ).normalize();
@@ -19,7 +20,7 @@ var Flyer = function(gameEngine, swarm, config, target) {
 
 	swarm.particleGeometry.vertices.push( new THREE.Vector3(0,0,0) );
 	var particleCount = swarm.particleGeometry.vertices.length
-	for( var v = 0; v < particleCount; v++ ){
+	for( var v = 0; v < particleCount; v++ ){ 
 		gameEngine.attributes.customColor.value[ v ] = new THREE.Color().setHSL( 1 - v / particleCount, 1.0, 0.5 );
 		gameEngine.attributes.customOffset.value[ v ] = 1 ; // not really used in shaders, move elsewhere
 	}

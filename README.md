@@ -9,8 +9,6 @@ http://s-a.github.io/octo-space-wars/
 ***Todo***
 * Write a bot player
 * ```GameEngine.alert()``` should display a cool neon holographic text for game text messages
-* Attach planet to custom player and display flyer count
-* Collect javascript object garbage after planet arive
 * Increase credits and flyers for all players on each planet per game round
 * Attack planet on left click
 * Buy planet upgrades to increase defense power

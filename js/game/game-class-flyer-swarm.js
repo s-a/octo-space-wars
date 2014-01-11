@@ -1,4 +1,6 @@
-var FlyerSwarm = function(gameEngine, config){
+var FID=-1;
+var FlyerSwarm = function(gameEngine, config, callback){
+	 
 	var count = 1;
 	var geometry = new THREE.Geometry();
 	var bezier;
@@ -15,7 +17,8 @@ var FlyerSwarm = function(gameEngine, config){
 	    opacity: gameEngine.config.flyerTrackLine.opacity
 	});
 	var line ;
-
+	FID = FID+1;
+	this.id = FID;
 	this.target = config.target;
 	this.source = config.source;
 	this.particleGeometry = new THREE.Geometry();
@@ -40,8 +43,6 @@ var FlyerSwarm = function(gameEngine, config){
 			console.log(targetHitTime);
 			this.targetPosition = target.position((gameEngine.timeMachine() + attackTimer) * 0.025);
 
-
-			
  
 		 	sourcePosition = s;
 			spline = new THREE.SplineCurve3([
@@ -77,8 +78,8 @@ var FlyerSwarm = function(gameEngine, config){
 			var y = vPoint.y ;//+ (index/2)/t0*0.025;
 			var z = vPoint.z ;//+ vPoint.y%2+index/2.5;
 		} else {
-
 		}
+		
 		//		document.title = targetHitTime +","+ gameEngine.timeMachine()*0.025 + (gameEngine.timeMachine()*0.025>targetHitTime);
 		return new THREE.Vector3(x,y,z);
 	}
@@ -96,7 +97,8 @@ var FlyerSwarm = function(gameEngine, config){
 	//particleCube.position.set(config.coords.x,config.coords.y,config.coords.z);
 	particleCube.dynamic = true;
 	particleCube.sortParticles = true;
-
+	particleCube.userData.sourcePlanet = this.target;
+	particleCube.userData.targetPlanet = this.target;
 	gameEngine.scene.add( particleCube );
 
 	this.move = function(drawline){
@@ -107,10 +109,18 @@ var FlyerSwarm = function(gameEngine, config){
 			if (pos.x){
 				this.particleGeometry.vertices[v] = pos;
 			} else {
-
 				if (v===this.particleGeometry.vertices.length-1){
+					var p = particleCube.userData.targetPlanet;
+					p.units--;
+					p.setText();
 					gameEngine.scene.remove( particleCube );
-					gameEngine.scene.remove( line )
+					gameEngine.scene.remove( line );
+					this.particleGeometry.vertices = [];
+					for (var i = 0; i < gameEngine.swarms.length; i++) {
+						var s = gameEngine.swarms[i];
+						if (s.id === this.id) gameEngine.swarms.remove(i);
+						break;
+					};
 				}
 
 			}

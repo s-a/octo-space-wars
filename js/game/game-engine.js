@@ -6,7 +6,12 @@ var Player = function  (color) {
 	}
 	return this;
 } 
- 
+// Array Remove - By John Resig (MIT Licensed)
+Array.prototype.remove = function(from, to) {
+  var rest = this.slice((to || from) + 1 || this.length);
+  this.length = from < 0 ? this.length + from : from;
+  return this.push.apply(this, rest);
+};
 var GameEngine = function() {
 	var self = this;
 	var container, renderer, controls, stats;
@@ -19,7 +24,7 @@ var GameEngine = function() {
 	this.clock = new THREE.Clock();
 	this.swarms = [];
 	this.config = {
-		trackLinesEverFlyer : 50,
+		trackLinesEverFlyer : 0,
 		flyerTrackLine : {
 			opacity :  0.05 ,
     		color   : 0x66FF33
@@ -51,7 +56,7 @@ var GameEngine = function() {
 	}
 
 	this.navigation = new Navigation();
-	//this.FlyerController = new FlyerController();
+
 
 	this.render = function(){
 		for (var i = 0; i < this.planets.length; i++) {
@@ -108,12 +113,19 @@ var GameEngine = function() {
 			var target = gameEngine.randomPlanet([0,source.id]);
 			var ii=0;
 			var i = window.setInterval(function() {
-				new FlyerSwarm(gameEngine, {
-					target : target,
-					source : source
-				}, 1);
+				if (source.units > 1){
+					new FlyerSwarm(gameEngine, {
+						target : target,
+						source : source
+					}, 1, function(){
+						
+					});
+					source.units--;
+					source.setText();
+				}
 				ii++;
-				if (ii===100){
+				
+				if (ii===100 || source.units < 2){
 					window.clearInterval(i);
 				}
 			},800);
@@ -245,11 +257,7 @@ var GameEngine = function() {
 	 	gameEngine.t0 = gameEngine.clock.getElapsedTime();
 
 		if ( keyboard.pressed("b") ) 	{
-			var rp = this.planets[3];
-			new FlyerSwarm(gameEngine, {
-				target : this.randomPlanet([0,3]),
-				source : rp
-			}, 1);
+
 		}
 
 		controls.update();
