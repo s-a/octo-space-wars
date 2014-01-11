@@ -23,7 +23,8 @@ var GameEngine = function() {
 	this.sound.Music = function  () {
 	 	var audio = document.createElement('audio');
 		var source = document.createElement('source');
-		source.src = document.URL + 'sound/track' + Math.floor(Math.random()*2 /*track length*/) + '.mp3';
+		
+		source.src = window.location.pathname.replace("game.html", "") + 'sound/track' + Math.floor(Math.random()*2 /*track length*/) + '.mp3';
 		audio.appendChild(source);
 		audio.play();
 		return audio;
