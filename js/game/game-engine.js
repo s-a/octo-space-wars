@@ -1,6 +1,12 @@
+var Player = function  (color) {
+	if (color){
+		this.color = new Color();
+	} else {
+		this.color = new Color("#000000").random();
+	}
+	return this;
+} 
  
- 
-var planets = [];
 var GameEngine = function() {
 	var self = this;
 	var container, renderer, controls, stats;
@@ -9,6 +15,7 @@ var GameEngine = function() {
 	var projector = new THREE.Projector();
 	var raycaster = new THREE.Raycaster();
 
+	this.planets = [];
 	this.clock = new THREE.Clock();
 	this.swarms = [];
 	this.config = {
@@ -47,8 +54,8 @@ var GameEngine = function() {
 	//this.FlyerController = new FlyerController();
 
 	this.render = function(){
-		for (var i = 0; i < planets.length; i++) {
-			var planet = planets[i];
+		for (var i = 0; i < this.planets.length; i++) {
+			var planet = this.planets[i];
 			planet.render(this.scene);
 		};
 
@@ -184,9 +191,10 @@ var GameEngine = function() {
 	}
 
 	this.start = function() {
-		initializeViewData();
+		this.planets = new SolarSystem().load(GAMEDATA).planets;
+ 
 		this.init();
-		animate(planets);
+		animate(this.planets);
 	};
 
 	this.randomPlanet = function(ignore) {
@@ -194,9 +202,9 @@ var GameEngine = function() {
 		var result = null;
 		ignore.push(null);
 		var planetId = null;
-		while(ignore.indexOf(planetId) !== -1) planetId = Math.floor(Math.random()*planets.length);
-		planets[planetId].id = planetId;
-		return planets[planetId];
+		while(ignore.indexOf(planetId) !== -1) planetId = Math.floor(Math.random()*this.planets.length);
+		this.planets[planetId].id = planetId;
+		return this.planets[planetId];
 	}
 
 
@@ -237,7 +245,7 @@ var GameEngine = function() {
 	 	gameEngine.t0 = gameEngine.clock.getElapsedTime();
 
 		if ( keyboard.pressed("b") ) 	{
-			var rp = planets[3];
+			var rp = this.planets[3];
 			new FlyerSwarm(gameEngine, {
 				target : this.randomPlanet([0,3]),
 				source : rp
@@ -255,8 +263,8 @@ var GameEngine = function() {
 			swarm.move(s%this.config.trackLinesEverFlyer===0);
 		};
 
-		for (var i = 0; i < planets.length; i++) {
-			var planet = planets[i];
+		for (var i = 0; i < this.planets.length; i++) {
+			var planet = this.planets[i];
 			var pos = planet.position(this.uniforms.time.value);
 			planet.move(pos.x,pos.y,pos.z);
 		};
@@ -265,20 +273,24 @@ var GameEngine = function() {
 	this.timeMachine = function(elapsedTime){
 		return 0.025 * elapsedTime || gameEngine.clock.getElapsedTime();
 	}
+
+	this.planet = function  (i) {
+		return this.planets[i];
+	};
+}
+
+function animate() {
+	var id = window.requestAnimationFrame( animate );
+	gameEngine.render(this.planets);
+	gameEngine.update(this.planets);
+	gameEngine.updateCamera();
 }
 
 window.gameEngine = new GameEngine(window);
 gameEngine.start();
-function animate() {
-	var id = window.requestAnimationFrame( animate );
-	gameEngine.render(planets);
-	gameEngine.update(planets);
-	gameEngine.updateCamera();
-}
-
 // intro
-gameEngine.cam.move(planets[1], planets[1], planets[0], function(){
-	gameEngine.cam.move({position:{x:1100,y:0,z:0},config:{size:10}}, planets[0], planets[0], function(){
+gameEngine.cam.move(gameEngine.planet(1), gameEngine.planet(1), gameEngine.planet(0), function(){
+	gameEngine.cam.move({position:{x:1100,y:0,z:0},config:{size:10}}, gameEngine.planet(0), gameEngine.planet(0), function(){
 	 	alert("Defend the habitat of your civilization!");
 	});
 });

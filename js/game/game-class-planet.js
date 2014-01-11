@@ -2,6 +2,8 @@ var Planet = function  (config) {
  	
  	this.id = config.id;
 	this.config = config;
+	this.player = new Player();
+	this.units = 1000;
 
  	var formatPlanetName = function  (timestamp) {
 		return timestamp.toFixed(2).replace(/./g, function(c, i, a) {
@@ -14,14 +16,14 @@ var Planet = function  (config) {
 	}
 
 	if (!config.isSun){
-		var shape = new THREE.TextGeometry(config.name || this.getName(), {
+		var shape = new THREE.TextGeometry(config.name || this.getName() + " * " + this.units, {
 			font: 'helvetiker', 
 			size: 6,  
 			bevelEnabled : false,
 			height : 0 
 		});
 
-	    var cylBleu = new THREE.MeshBasicMaterial({color: 0xFF0000, opacity: 0.8 }); 
+	    var cylBleu = new THREE.MeshBasicMaterial({color: this.player.color.hex(), opacity: 0.8 }); 
 	  	var textMesh = new THREE.Mesh(shape, cylBleu);
 	  	//textMesh.userData = this;
 	}
@@ -54,7 +56,7 @@ var Planet = function  (config) {
 	var surface = new THREE.Mesh( planet_geometry, material );
 	var atmosphere_material = new THREE.MeshPhongMaterial({
 		//map: THREE.ImageUtils.loadTexture( "images/" + config.atmosphereTexture ),
-		color: 0xFF0000,
+		color: this.player.color.hex(),
 		ambient: 16777215,
 		emissive: 1381653,
 		specular: 16777215,

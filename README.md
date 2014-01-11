@@ -23,4 +23,5 @@ http://s-a.github.io/octo-space-wars/
 * Load current flyers from JSON data to save a game
 * Voice commands
 * Cool game sounds
+* Support touch devices
 * And much more... :)
