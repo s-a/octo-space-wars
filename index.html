@@ -1,85 +1,53 @@
-<!doctype html>
-<html lang="en">
-<head>
-	<title>Octo Space Wars Simlulator</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
-	<link rel=stylesheet href="css/base.css"/>
-	<link rel=stylesheet href="css/jquery-ui.css" />
-	<link rel=stylesheet href="css/info.css"/>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
 
-</head>
-<body>
-	<div id="infoButton"></div>
-	<div id="infoBox" title="Demo Information">
-		In development...
-	</div>
-	<div id="ThreeJS" style="position: absolute; left:0px; top:0px"></div>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print" />
 
-	<script src="js/Three.js"></script>
-	<script src="js/Detector.js"></script>
-	<script src="js/Stats.js"></script>
-	<script src="js/OrbitControls.js"></script>
-	<script src="js/THREEx.KeyboardState.js"></script>
-	<script src="js/THREEx.FullScreen.js"></script>
-	<script src="js/THREEx.WindowResize.js"></script>
-	<script src="js/helvetiker_regular.typeface.js"></script>
-	<!-- Custom shaders for particle effects -->
-	<script type="x-shader/x-vertex" id="vertexshader">
-		uniform float time;
-		attribute vec3 customColor;
-		varying vec3 vColor;
-		void main(){
-			vColor = customColor; // set color associated to vertex; use later in fragment shader.
+    <title>Octo-space-wars by s-a</title>
+  </head>
 
-			vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+  <body>
 
-			// option (1): draw particles at constant size on screen
-			// gl_PointSize = size;
-		    // option (2): scale particles as objects in 3D space
-			gl_PointSize = 5.0 * ( 300.0 / length( mvPosition.xyz ) );
-			gl_Position = projectionMatrix * mvPosition;
-		}
-	</script>
-	<script type="x-shader/x-fragment" id="fragmentshader">
-		uniform sampler2D texture;
-		varying vec3 vColor; // colors associated to vertices, assigned by vertex shader
-		void main(){
-			// calculates a color for the particle
-			gl_FragColor = vec4( vColor, 1.0 );
-			// sets a white particle texture to desired color
-			gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
-		}
-	</script>
-	<!-- end of custom shaders -->
-	<!-- jQuery code to display an information button annyangd box when clicked. -->
-	<script src="js/jquery-1.9.1.js"></script>
-	<script src="js/jquery-ui.js"></script>
-	<script src="js/info.js"></script>
+    <header>
+      <div class="container">
+        <h1>Octo-space-wars</h1>
+        <h2>A Web GL Octo &quot;spaceWarSimulation&quot;</h2>
 
-	<script src="js/game/game-class-planet.js"></script>
-	<script src="js/game/game-class-flyer.js"></script>
-	<script src="js/game/game-class-flyer-swarm.js"></script>
-	<script src="js/game/game-data.js"></script>
-	<script src="js/game/game-camera.js"></script>
-	<script src="js/game/game-engine.js"></script>
-	<script src="js/game/color.js"></script>
-    <script src="js/speech-router.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/1.1.0/annyang.min.js"></script>
-    <script type="text/javascript"> 
-        new SpeechRouter({
-		    routes: {
-		        "use planet :id": function (id) {
-		            document.title = id;
-		        },
-		        "start music": function () {
-		            document.title = "start music";
-		        },
-		        "stop music": function () {
-		            document.title = "stop music";
-		        },
-		    }
-		}).start();
-    </script>
-</body>
+        <section id="downloads">
+          <a href="https://github.com/s-a/octo-space-wars/zipball/master" class="btn">Download as .zip</a>
+          <a href="https://github.com/s-a/octo-space-wars/tarball/master" class="btn">Download as .tar.gz</a>
+          <a href="https://github.com/s-a/octo-space-wars" class="btn btn-github"><span class="icon"></span>View on GitHub</a>
+        </section>
+      </div>
+    </header>
+
+    <div class="container">
+      <section id="main_content">
+        <h3>
+			<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to Octo Space War Pages.
+		</h3>
+
+		<p>Check out the game source code</p>
+
+		<pre><code>$ cd your_repo_root/repo_name
+		$ git fetch origin
+		$ git checkout gh-pages
+		</code></pre>
+
+		<p></p>
+
+		<h3>
+			<a name="designer-templates" class="anchor" href="game.html"><span class="octicon octicon-link">Try the game online</span></a>
+		</h3>
+
+      </section>
+    </div>
+
+
+  </body>
 </html>
