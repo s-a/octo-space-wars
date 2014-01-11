@@ -283,12 +283,3 @@ gameEngine.cam.move(planets[1], planets[1], planets[0], function(){
 	});
 });
 
-console.warn("todo:");
-console.info("Write a player bot");
-console.info("Attach planet to custom player");
-console.info("collect javascript object garbage after planet arive");
-console.info("Rewrite flyerPosition methode to use particle system better");
-console.info("Detect flyer colusion");
-console.info("Load current flyers from JSON data");
-console.info("Pay attention to gravity for planets and flyers");
-console.info("And much more... :)");
