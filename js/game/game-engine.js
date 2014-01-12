@@ -40,15 +40,17 @@ var GameEngine = function() {
 		
 		source.src = window.location.pathname.replace("game.html", "") + 'sound/track' + (Math.floor(Math.random()*2)+1 /*track length*/) + '.mp3';
 		audio.appendChild(source);
-		audio.play();
 		return audio;
 	}
 
-	this.sound.Sample = function(sample, volume) {
+	this.sound.Sample = function(sample, volume, onLoad) {
 	 	var audio = document.createElement('audio');
 		var source = document.createElement('source');
-		audio.volume = volume || 1;
-		source.src = window.location.pathname.replace("game.html", "") + 'sound/' + sample + '.mp3';
+		audio.volume = volume || 0.9;
+		audio.addEventListener('canplaythrough',   function() { 
+			onLoad();
+		}, false);
+		source.src = 'sound/' + sample + '.mp3';
 		audio.appendChild(source);
 
 		return audio;
@@ -131,12 +133,12 @@ var GameEngine = function() {
 				}
 			};
 			if (gameEngine.planets.length === exclude.length) {
-				new gameEngine.sound.Sample("computer_error").play();
+				gameEngine.sound.sample["computer_error"].play();
 				return;
 			}
 			var target = gameEngine.randomPlanet(exclude);
 			var ii=0;
-			new gameEngine.sound.Sample("computer_work_beep").play();
+			gameEngine.sound.sample["computer_work_beep"].play();
 			var i = window.setInterval(function() {
 				if (source.units > 1){
 					new FlyerSwarm(gameEngine, {
@@ -149,7 +151,7 @@ var GameEngine = function() {
 					source.setText();
 					 
 				} else {
-					new gameEngine.sound.Sample("computer_error").play();
+					gameEngine.sound.sample["computer_error"].play();
 				}
 				ii++;
 				
@@ -161,7 +163,70 @@ var GameEngine = function() {
 		}
 	}
 
+
+	this.preload = function  (done, update) {
+		var materials = [
+			"venusmap.jpg",
+			"nebula-zpos.png",
+			"nebula-zneg.png",
+			"nebula-ypos.png",
+			"nebula-yneg.png",
+			"nebula-xpos.png",
+			"nebula-xneg.png",
+			"mercurymap.jpg",
+			"mercurybump.jpg",
+			"mars_1k_color.jpg",
+			"jupitermap.jpg",
+			"sunmap.jpg"
+		];
+
+		var sounds = [
+			{name : "autodefense_ep", volume : 0.4}, 
+			{name : "tng_viewscreen_on", volume : 0.6},
+			{name : "tng_warp4_clean", volume : 0.8},
+			{name : "tng_warp_out2", volume : 0.5},
+			{name : "computerbeep_1", volume : 0.6},
+			{name : "smallexplosion1", volume : 0.3},
+			{name : "computer_error", volume : 0.6}
+		];
+
+		var all = materials.length;
+ 		var currentIndex = 0;
+		for (var i = 0; i < materials.length; i++) {
+			var m = materials[i];
+			this.material[m] = THREE.ImageUtils.loadTexture( "images/" + m, null	, function(){
+				all--;
+				if (all===0){
+					loadSounds();
+				}
+				currentIndex++;
+				if (update) update(100/(sounds.length+materials.length)*currentIndex);
+			});
+		};
+
+
+		var loadSounds = function() {		
+			all = sounds.length;
+			for (var i = 0; i < sounds.length; i++) {
+				var m = sounds[i];
+
+				gameEngine.sound.sample[m.name] = new gameEngine.sound.Sample(m.name, m.volume, function(){
+					all--;
+					if (all===0){ 
+						done();
+					}
+					currentIndex++;
+					if (update) update(100/(sounds.length+materials.length)*currentIndex);
+				});
+			};
+		};
+
+
+		//
+	}
+
 	this.init = function(){
+
 		document.addEventListener( 'mousemove', this.onDocumentMouseMove, false );
 		document.addEventListener( 'mousedown', this.onDocumentMouseDown, false );
 		// SCENE
@@ -231,11 +296,29 @@ var GameEngine = function() {
 			customColor:	 { type: 'c',  value: [] },
 			customOffset:	 { type: 'f',  value: [] },
 		};
+ 
+				var callbackProgress = function( progress, result ) {
+
+					var bar = 250,
+						total = progress.totalModels + progress.totalTextures,
+						loaded = progress.loadedModels + progress.loadedTextures;
+
+					if ( total )
+						bar = Math.floor( bar * loaded / total );
+
+					$( "bar" ).style.width = bar + "px";
+
+					count = 0;
+					for ( var m in result.materials ) count++;
+
+					handle_update( result, Math.floor( count/total ) );
+
+				}
+
 	}
 
 	this.start = function() {
 		this.planets = new SolarSystem().load(GAMEDATA).planets;
- 
 		this.init();
 		animate(this.planets);
 	};
@@ -294,7 +377,7 @@ var GameEngine = function() {
 				seconds: 7,
 				msg:"octoSpaceWars v" + this.version + " alpha help<br><br>Mouse:<br> * Wheel : Zoom in / out<br> * Left click and drag : Look to another position<br> * Right click and drag : Move camera position in X and Y<br><br>Keyboard:<br> * 'h' : help<br><br>Voice commands (in development):<br><br> * use planet :id<br> * start music<br> * stop music"
 			});
-		 	new gameEngine.sound.Sample("tng_viewscreen_on").play();
+		 	gameEngine.sound.sample["tng_viewscreen_on"].play();
 		}
 
 		controls.update();
@@ -336,6 +419,10 @@ var GameEngine = function() {
 		 	}, a.seconds*1000);
 	 	});
 	};
+	
+	this.material = [];
+	this.sound.sample = [];
+
 }
 
 function animate() {
@@ -349,40 +436,48 @@ function animate() {
 $(function() {
 
 	window.gameEngine = new GameEngine(window);
-	gameEngine.start();
-	// intro
-	window.setTimeout(function  () {
-	 	new gameEngine.sound.Sample("tng_viewscreen_on").play();
-		gameEngine.alert({
-			type: "fatal",
-			seconds: 4,
-			msg:"Commander!<br>We are on red alert!<br>All systems are ready ..."
-		}, function() {
+	gameEngine.preload(function() {
+		gameEngine.start();
+		
+		document.title = "Game data loaded.";
 
-		 	new gameEngine.sound.Sample("tng_warp4_clean").play();
-		 	window.setTimeout(function() {
-		 		new gameEngine.sound.Sample("tng_warp_out2").play();
-		 	},  2000); 
-			gameEngine.cam.move(gameEngine.planet(0), gameEngine.planet(0), gameEngine.planet(0), function(){
-				new gameEngine.sound.Sample("computerbeep_1").play();
-		 		
+		// intro
+		window.setTimeout(function  () {
+		 	gameEngine.sound.sample["tng_viewscreen_on"].play();
+			gameEngine.alert({
+				type: "fatal",
+				seconds: 4,
+				msg:"Commander!<br>We are on red alert!<br>All systems are ready ..."
+			}, function() {
+
+			 	gameEngine.sound.sample["tng_warp4_clean"].play();
 			 	window.setTimeout(function() {
-			 		new gameEngine.sound.Sample("tng_warp_out2").play();
-			 	}, 1300);
-				gameEngine.cam.move({position:{x:3100,y:0,z:0},config:{size:10}}, gameEngine.planet(0), gameEngine.planet(0), function(){
-		 			 
-		 			 
-					gameEngine.camera.lookAt(gameEngine.planet(0).position(gameEngine.timeMachine() * 0.025));
-					new gameEngine.sound.Sample("computerbeep_1").play();
-					gameEngine.alert({
-						type: "info",
-						seconds: 7,
-						msg:"Foreign powers fall into our system ...<br>Show no mercy!<br>Defend the habitat of our civilization and destroy them!<br><br>Good luck... (press 'h' for help)"
+			 		gameEngine.sound.sample["tng_warp_out2"].play();
+			 	},  2000); 
+				gameEngine.cam.move(gameEngine.planet(0), gameEngine.planet(0), gameEngine.planet(0), function(){
+					gameEngine.sound.music.play();
+					gameEngine.sound.sample["computerbeep_1"].play();
+			 		
+				 	window.setTimeout(function() {
+				 		gameEngine.sound.sample["tng_warp_out2"].play();
+				 	}, 1300);
+					gameEngine.cam.move({position:{x:3100,y:0,z:0},config:{size:10}}, gameEngine.planet(0), gameEngine.planet(0), function(){
+			 			 
+			 			 
+						gameEngine.camera.lookAt(gameEngine.planet(0).position(gameEngine.timeMachine() * 0.025));
+						gameEngine.sound.sample["computerbeep_1"].play();
+						gameEngine.alert({
+							type: "info",
+							seconds: 7,
+							msg:"Foreign powers fall into our system ...<br>Show no mercy!<br>Defend the habitat of our civilization and destroy them!<br><br>Good luck... (press 'h' for help)"
+						});
+						
 					});
-					
 				});
 			});
-		});
-	},2000);
+		},2000);
+	}, function  (percentDone) {
+		document.title = percentDone + "%";
+	});
 });
 

@@ -52,9 +52,9 @@ var Planet = function  (config) {
 		atmosphere = new THREE.Object3D();
 		var planet_geometry = new THREE.SphereGeometry( config.size, config.size, config.size );
 		var atmosphere_geometry = new THREE.SphereGeometry( config.size+5, config.size+5, config.size+5 );
-
+ 
 		material = new THREE.MeshPhongMaterial({
-		  map: THREE.ImageUtils.loadTexture( "images/" + config.surfaceTexture ),
+		  map: gameEngine.material[config.surfaceTexture], // THREE.ImageUtils.loadTexture( "images/" + config.surfaceTexture ),
 		  color: 13750737,
 		  ambient: 13092807,
 		  emissive: config.emissive || 595494,

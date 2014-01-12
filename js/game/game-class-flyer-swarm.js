@@ -117,7 +117,7 @@ var FlyerSwarm = function(gameEngine, config, callback){
 					} else {
 						p.units--;
 						if (p.units <= 0){
-							new gameEngine.sound.Sample("smallexplosion1", 0.5).play();
+							gameEngine.sound.sample["smallexplosion1"].play();
 							p.conquer(this.source.player);
 							gameEngine.alert({
 								type: "success",
@@ -133,10 +133,10 @@ var FlyerSwarm = function(gameEngine, config, callback){
 					for (var i = 0; i < gameEngine.swarms.length; i++) {
 						if (!p.defenseAlertDone){
 							p.defenseAlertDone = true;
-							new gameEngine.sound.Sample("autodefense_ep", 0.5).play();
+							//gameEngine.sound.samples("autodefense_ep").play(0.5);
+							gameEngine.sound.sample["autodefense_ep"].play();
 						}
-						
-						//new gameEngine.sound.Sample("smallexplosion1",0.3).play();
+						 
 						var s = gameEngine.swarms[i];
 						if (s.id === this.id) gameEngine.swarms.remove(i);
 						break;
