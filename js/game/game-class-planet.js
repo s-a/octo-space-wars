@@ -94,6 +94,7 @@ var Planet = function  (config) {
 		this.planet = planet;
 		this.atmosphere = atmosphere;
 
+
 	}
 
 	this.getSize = function(size) {

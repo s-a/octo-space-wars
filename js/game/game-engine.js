@@ -146,6 +146,9 @@ var GameEngine = function() {
 					});
 					source.units--;
 					source.setText();
+					 
+				} else {
+					new gameEngine.sound.Sample("computer_error").play();
 				}
 				ii++;
 				
@@ -309,6 +312,15 @@ var GameEngine = function() {
 	this.planet = function  (i) {
 		return this.planets[i];
 	};
+
+	this.alert = function(a) {
+		$("#alert").attr("class", "").addClass("alert-" + (a.type || "fatal")).html(a.msg);
+
+	 	$("#alert").fadeIn("slow");
+	 	window.setTimeout(function() {
+	 		$("#alert").fadeOut("slow");
+	 	}, a.seconds*1000);
+	};
 }
 
 function animate() {
@@ -323,8 +335,14 @@ gameEngine.start();
 // intro
 gameEngine.cam.move(gameEngine.planet(1), gameEngine.planet(1), gameEngine.planet(0), function(){
 	gameEngine.cam.move({position:{x:1100,y:0,z:0},config:{size:10}}, gameEngine.planet(0), gameEngine.planet(0), function(){
+
 		new gameEngine.sound.Sample("computerbeep_1").play();
-	 	alert("Defend the habitat of your civilization!");
+		gameEngine.alert({
+			type: "info",
+			seconds: 8,
+			msg:"Foreign powers fall into our system ...<br>Defend the habitat of our civilization and destroy them!"
+		});
+		
 	});
 });
 

@@ -117,7 +117,13 @@ var FlyerSwarm = function(gameEngine, config, callback){
 					} else {
 						p.units--;
 						if (p.units <= 0){
+							new gameEngine.sound.Sample("smallexplosion1", 0.5).play();
 							p.conquer(this.source.player);
+							gameEngine.alert({
+								type: "success",
+								seconds: 3,
+								msg:"A planet was conquered!"
+							});
 						}
 					}
 					p.setText();

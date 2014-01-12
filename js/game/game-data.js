@@ -32,11 +32,32 @@ var GAMEDATA = [{
 	id : 4,
 	parent: 0,
 	surfaceTexture:'mars_1k_color.jpg',
-	yearInDays:686.98  ,
+	yearInDays:321.98  ,
 	distance: 227.9,
 	size:(6787 )
 },{
 	id : 5,
+	parent: 0,
+	surfaceTexture:'mars_1k_color.jpg',
+	yearInDays:2*256  ,
+	distance: 327.9,
+	size:(1787)
+},{
+	id : 6,
+	parent: 0,
+	surfaceTexture:'mars_1k_color.jpg',
+	yearInDays:200.98  ,
+	distance: 347.9,
+	size:(787)
+},{
+	id : 7,
+	parent: 0,
+	surfaceTexture:'mars_1k_color.jpg',
+	yearInDays:1000  ,
+	distance: 377.9,
+	size:(1333787)
+},{
+	id : 8,
 	parent: 0,
 	surfaceTexture:'jupitermap.jpg',
 	yearInDays:11.86*365,
