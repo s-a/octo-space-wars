@@ -1,7 +1,10 @@
 octoSpaceWars
 ===============
 
+In development...
+
 A Web GL Octo "spaceWarSimulation" experiment
+***So far only tested with Google Chrome***
 
 ***Demo***
 http://s-a.github.io/octo-space-wars/
