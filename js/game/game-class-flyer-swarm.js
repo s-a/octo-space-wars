@@ -111,12 +111,26 @@ var FlyerSwarm = function(gameEngine, config, callback){
 			} else {
 				if (v===this.particleGeometry.vertices.length-1){
 					var p = particleCube.userData.targetPlanet;
-					p.units--;
+
+					if (p.player.color.equal(this.source.player.color)){
+						p.units++;
+					} else {
+						p.units--;
+						if (p.units === 0){
+							p.conquer(this.source.player);
+						}
+					}
 					p.setText();
 					gameEngine.scene.remove( particleCube );
 					gameEngine.scene.remove( line );
 					this.particleGeometry.vertices = [];
 					for (var i = 0; i < gameEngine.swarms.length; i++) {
+						if (!p.defenseAlertDone){
+							p.defenseAlertDone = true;
+							new gameEngine.sound.Sample("autodefense_ep", 0.5).play();
+						}
+						
+						//new gameEngine.sound.Sample("smallexplosion1",0.3).play();
 						var s = gameEngine.swarms[i];
 						if (s.id === this.id) gameEngine.swarms.remove(i);
 						break;

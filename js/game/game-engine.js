@@ -42,7 +42,18 @@ var GameEngine = function() {
 		return audio;
 	}
 
+	this.sound.Sample = function(sample, volume) {
+	 	var audio = document.createElement('audio');
+		var source = document.createElement('source');
+		audio.volume = volume || 1;
+		source.src = window.location.pathname.replace("game.html", "") + 'sound/' + sample + '.mp3';
+		audio.appendChild(source);
+
+		return audio;
+	}
+
 	this.sound.music = new this.sound.Music();
+	this.sound.s = new this.sound.Sample("affirmative2_ep").play();
 
 	var Navigation = function() {
 		this.computeSecurePath = function (setup) {
@@ -112,6 +123,7 @@ var GameEngine = function() {
 			var source = INTERSECTED.userData.planet;
 			var target = gameEngine.randomPlanet([0,source.id]);
 			var ii=0;
+			new gameEngine.sound.Sample("priorityclearancealphaone_ep").play();
 			var i = window.setInterval(function() {
 				if (source.units > 1){
 					new FlyerSwarm(gameEngine, {
@@ -299,6 +311,7 @@ gameEngine.start();
 // intro
 gameEngine.cam.move(gameEngine.planet(1), gameEngine.planet(1), gameEngine.planet(0), function(){
 	gameEngine.cam.move({position:{x:1100,y:0,z:0},config:{size:10}}, gameEngine.planet(0), gameEngine.planet(0), function(){
+		new gameEngine.sound.Sample("computerbeep_1").play();
 	 	alert("Defend the habitat of your civilization!");
 	});
 });
