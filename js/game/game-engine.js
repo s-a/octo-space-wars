@@ -13,6 +13,7 @@ Array.prototype.remove = function(from, to) {
   return this.push.apply(this, rest);
 };
 var GameEngine = function() {
+
 	var self = this;
 	var container, renderer, controls, stats;
 	var keyboard = new THREEx.KeyboardState();
@@ -20,6 +21,7 @@ var GameEngine = function() {
 	var projector = new THREE.Projector();
 	var raycaster = new THREE.Raycaster();
 
+	this.version = 0.756;
 	this.planets = [];
 	this.clock = new THREE.Clock();
 	this.swarms = [];
@@ -53,7 +55,6 @@ var GameEngine = function() {
 	}
 
 	this.sound.music = new this.sound.Music();
-	this.sound.s = new this.sound.Sample("affirmative2_ep").play();
 
 	var Navigation = function() {
 		this.computeSecurePath = function (setup) {
@@ -170,8 +171,11 @@ var GameEngine = function() {
 		var VIEW_ANGLE = 45, ASPECT = SCREEN_WIDTH / SCREEN_HEIGHT, NEAR = 0.1, FAR = 20000;
 		this.camera = new THREE.PerspectiveCamera( VIEW_ANGLE, ASPECT, NEAR, FAR);
 		this.scene.add(this.camera);
-		this.camera.position.set(0,1200,400);
-		this.camera.lookAt(this.scene.position);
+		var outerPlanet = this.planets[this.planets.length-1];
+		var outerPlanetPosition = outerPlanet.position((this.timeMachine()+5) * 0.025);
+		this.camera.position.set(outerPlanetPosition.x,outerPlanetPosition.y,outerPlanetPosition.z-outerPlanet.config.size*3);
+		this.camera.lookAt(this.planet(0).position(this.timeMachine() * 0.025));
+		//this.camera.lookAt(this.scene.position);
 		// RENDERER
 		if ( Detector.webgl )
 			renderer = new THREE.WebGLRenderer( {antialias:true} );
@@ -281,10 +285,16 @@ var GameEngine = function() {
 	}
 
 	this.update = function(){
-	 	gameEngine.t0 = gameEngine.clock.getElapsedTime();
+	 	gameEngine.t0 = gameEngine.clock.getElapsedTime(); 
 
-		if ( keyboard.pressed("b") ) 	{
+		if ( keyboard.pressed("h") ){
 
+			gameEngine.alert({
+				type: "info",
+				seconds: 7,
+				msg:"octoSpaceWars v" + this.version + " alpha help<br><br>Mouse:<br> * Wheel : Zoom in / out<br> * Left click and drag : Look to another position<br> * Right click and drag : Move camera position in X and Y<br><br>Keyboard:<br> * 'h' : help<br><br>Voice commands (in development):<br><br> * use planet :id<br> * start music<br> * stop music"
+			});
+		 	new gameEngine.sound.Sample("tng_viewscreen_on").play();
 		}
 
 		controls.update();
@@ -313,13 +323,18 @@ var GameEngine = function() {
 		return this.planets[i];
 	};
 
-	this.alert = function(a) {
+	var msgTimer = null;
+	this.alert = function(a, callback) {
 		$("#alert").attr("class", "").addClass("alert-" + (a.type || "fatal")).html(a.msg);
 
-	 	$("#alert").fadeIn("slow");
-	 	window.setTimeout(function() {
-	 		$("#alert").fadeOut("slow");
-	 	}, a.seconds*1000);
+	 	$("#alert").fadeIn("slow", function() {
+		 	window.clearTimeout(msgTimer);
+		 	msgTimer = window.setTimeout(function() {
+		 		$("#alert").fadeOut("slow", function() {
+		 			if (callback) callback();
+		 		});
+		 	}, a.seconds*1000);
+	 	});
 	};
 }
 
@@ -330,19 +345,44 @@ function animate() {
 	gameEngine.updateCamera();
 }
 
-window.gameEngine = new GameEngine(window);
-gameEngine.start();
-// intro
-gameEngine.cam.move(gameEngine.planet(1), gameEngine.planet(1), gameEngine.planet(0), function(){
-	gameEngine.cam.move({position:{x:1100,y:0,z:0},config:{size:10}}, gameEngine.planet(0), gameEngine.planet(0), function(){
 
-		new gameEngine.sound.Sample("computerbeep_1").play();
+$(function() {
+
+	window.gameEngine = new GameEngine(window);
+	gameEngine.start();
+	// intro
+	window.setTimeout(function  () {
+	 	new gameEngine.sound.Sample("tng_viewscreen_on").play();
 		gameEngine.alert({
-			type: "info",
-			seconds: 8,
-			msg:"Foreign powers fall into our system ...<br>Defend the habitat of our civilization and destroy them!"
+			type: "fatal",
+			seconds: 4,
+			msg:"Commander!<br>We are on red alert!<br>All systems are ready ..."
+		}, function() {
+
+		 	new gameEngine.sound.Sample("tng_warp4_clean").play();
+		 	window.setTimeout(function() {
+		 		new gameEngine.sound.Sample("tng_warp_out2").play();
+		 	},  2000); 
+			gameEngine.cam.move(gameEngine.planet(0), gameEngine.planet(0), gameEngine.planet(0), function(){
+				new gameEngine.sound.Sample("computerbeep_1").play();
+		 		
+			 	window.setTimeout(function() {
+			 		new gameEngine.sound.Sample("tng_warp_out2").play();
+			 	}, 1300);
+				gameEngine.cam.move({position:{x:3100,y:0,z:0},config:{size:10}}, gameEngine.planet(0), gameEngine.planet(0), function(){
+		 			 
+		 			 
+					gameEngine.camera.lookAt(gameEngine.planet(0).position(gameEngine.timeMachine() * 0.025));
+					new gameEngine.sound.Sample("computerbeep_1").play();
+					gameEngine.alert({
+						type: "info",
+						seconds: 7,
+						msg:"Foreign powers fall into our system ...<br>Show no mercy!<br>Defend the habitat of our civilization and destroy them!<br><br>Good luck... (press 'h' for help)"
+					});
+					
+				});
+			});
 		});
-		
-	});
+	},2000);
 });
 

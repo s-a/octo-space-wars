@@ -1,8 +1,8 @@
 var Planet = function  (config) {
- 	
+ 	config = config || {id:-1};
  	this.id = config.id;
 	this.config = config;
-	this.player = new Player();
+	if (window.Player) {this.player = new Player()} else { this.player = {color:new Color("#000000")}};
 	this.units = (config.id === 1 ? 1000 : (config.id%2===0 ? 100 : 10));
 
  	var formatPlanetName = function  (timestamp) {

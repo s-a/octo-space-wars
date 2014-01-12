@@ -1,66 +1,32 @@
-var GAMEDATA = [{
-	id : 0,
-	parent: 0,
-	emissive:13750737,
-	surfaceTexture:'sunmap.jpg',
-	distance:0,
-	yearInDays:0,
-	size:(1392000),
-	isSun:true 
-},{
-	id : 1,
-	parent: 0,
-	surfaceTexture:'mercurymap.jpg',
-	distance: 57.9,
-	yearInDays:87.97,
-	size:(4878 ) 
-},{
-	id : 2,
-	parent: 0,
-	surfaceTexture:'venusmap.jpg',
-	distance: 108.2,
-	yearInDays:224.70,
-	size:(12104)
-},{
-	id : 3,
-	parent: 0,
-	surfaceTexture:'earth-day.jpg',
-	yearInDays:365.26 ,
-	distance: 149.6,
-	size:(12756)
-},{
-	id : 4,
-	parent: 0,
-	surfaceTexture:'mars_1k_color.jpg',
-	yearInDays:321.98  ,
-	distance: 227.9,
-	size:(6787 )
-},{
-	id : 5,
-	parent: 0,
-	surfaceTexture:'mars_1k_color.jpg',
-	yearInDays:2*256  ,
-	distance: 327.9,
-	size:(1787)
-},{
-	id : 6,
-	parent: 0,
-	surfaceTexture:'mars_1k_color.jpg',
-	yearInDays:200.98  ,
-	distance: 347.9,
-	size:(787)
-},{
-	id : 7,
-	parent: 0,
-	surfaceTexture:'mars_1k_color.jpg',
-	yearInDays:1000  ,
-	distance: 377.9,
-	size:(1333787)
-},{
-	id : 8,
-	parent: 0,
-	surfaceTexture:'jupitermap.jpg',
-	yearInDays:11.86*365,
-	distance: 778.3,
-	size:(142754  )
-}];
+var GAMEDATA = [
+	{
+		id : 0,
+		parent: 0,
+		emissive:13750737,
+		surfaceTexture:'sunmap.jpg',
+		distance:0,
+		yearInDays:0,
+		size:(1392000),
+		isSun:true 
+	}
+];
+ 
+var ___id = 0;
+var ___distance = 20;
+var randomPlanetMeta = function  () {
+	var prevPlanet = GAMEDATA[0]
+	___id++;
+	___distance += (prevPlanet.size/100000) + Math.floor(Math.random()*100)+10;
+	return	{
+		id : ___id,
+		parent: 0,
+		surfaceTexture:'mercurymap.jpg',
+		distance: ___distance,
+		yearInDays:Math.floor(Math.random()*1000)+200,
+		size:(Math.floor(Math.random()*150000)+2) 
+	}
+}
+
+for (var i = 0; i < 15; i++) {
+	GAMEDATA.push(randomPlanetMeta());
+};
