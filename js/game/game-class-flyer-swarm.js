@@ -40,7 +40,7 @@ var FlyerSwarm = function(gameEngine, config, callback){
 			distance = source.distance(target, timeOffset);//point;
 		 	targetHitTime = (timeOffset)+ (distance / attackTimer);
 			var s = source.position(gameEngine.timeMachine()*0.025);
-			console.log(targetHitTime);
+			//console.log(targetHitTime);
 			this.targetPosition = target.position((gameEngine.timeMachine() + attackTimer) * 0.025);
 
  
@@ -116,7 +116,7 @@ var FlyerSwarm = function(gameEngine, config, callback){
 						p.units++;
 					} else {
 						p.units--;
-						if (p.units === 0){
+						if (p.units <= 0){
 							p.conquer(this.source.player);
 						}
 					}

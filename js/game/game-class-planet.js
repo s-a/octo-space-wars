@@ -3,7 +3,7 @@ var Planet = function  (config) {
  	this.id = config.id;
 	this.config = config;
 	this.player = new Player();
-	this.units = (config.id%2===0 ? 100 : 10);
+	this.units = (config.id === 1 ? 1000 : (config.id%2===0 ? 100 : 10));
 
  	var formatPlanetName = function  (timestamp) {
 		return timestamp.toFixed(2).replace(/./g, function(c, i, a) {

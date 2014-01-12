@@ -24,7 +24,7 @@ var GameEngine = function() {
 	this.clock = new THREE.Clock();
 	this.swarms = [];
 	this.config = {
-		trackLinesEverFlyer : 0,
+		trackLinesEverFlyer : 5,
 		flyerTrackLine : {
 			opacity :  0.05 ,
     		color   : 0x66FF33
@@ -121,9 +121,21 @@ var GameEngine = function() {
 		event.preventDefault();
 		if (INTERSECTED){
 			var source = INTERSECTED.userData.planet;
-			var target = gameEngine.randomPlanet([0,source.id]);
+			var exclude = [0];
+			for (var i = 0; i < gameEngine.planets.length; i++) {
+				var p = gameEngine.planets[i]
+				if (p.player.color.equal(source.player.color)){
+					exclude.push(p.id);
+					console.log(exclude);
+				}
+			};
+			if (gameEngine.planets.length === exclude.length) {
+				new gameEngine.sound.Sample("computer_error").play();
+				return;
+			}
+			var target = gameEngine.randomPlanet(exclude);
 			var ii=0;
-			new gameEngine.sound.Sample("priorityclearancealphaone_ep").play();
+			new gameEngine.sound.Sample("computer_work_beep").play();
 			var i = window.setInterval(function() {
 				if (source.units > 1){
 					new FlyerSwarm(gameEngine, {
@@ -137,10 +149,10 @@ var GameEngine = function() {
 				}
 				ii++;
 				
-				if (ii===100 || source.units < 2){
+				if (ii===10 || source.units < 2){
 					window.clearInterval(i);
 				}
-			},800);
+			},500);
 		 
 		}
 	}
