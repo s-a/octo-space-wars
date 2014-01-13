@@ -166,13 +166,13 @@ var GameEngine = function() {
 
 	this.preload = function  (done, update) {
 		var materials = [
-			"venusmap.jpg",
 			"nebula-zpos.png",
 			"nebula-zneg.png",
 			"nebula-ypos.png",
 			"nebula-yneg.png",
 			"nebula-xpos.png",
 			"nebula-xneg.png",
+			"venusmap.jpg",
 			"mercurymap.jpg",
 			"mercurybump.jpg",
 			"mars_1k_color.jpg",
@@ -183,9 +183,11 @@ var GameEngine = function() {
 		var sounds = [
 			{name : "autodefense_ep", volume : 0.1},
 			{name : "tng_warp4_clean", volume : 1},
-			{name : "smallexplosion1", volume : 0.3},
-			{name : "computer_error", volume : 0.6},
-			{name : "computer_work_beep", volume : 1}
+			{name : "smallexplosion1", volume : 0.7},
+			{name : "computer_error", volume : 1},
+			{name : "computer_work_beep", volume : 1},
+			{name : "computer_work_beep_simple", volume : 1},
+			{name : "system_alarm", volume : 0.6}
 		];
 
 		var all = materials.length;
@@ -366,12 +368,13 @@ var GameEngine = function() {
 
 		if ( keyboard.pressed("h") ){
 
+		 	gameEngine.sound.sample["computer_work_beep_simple"].play();
 			gameEngine.alert({
 				type: "info",
 				seconds: 7,
 				msg:"octoSpaceWars v" + this.version + " alpha help<br><br>Mouse:<br> * Wheel : Zoom in / out<br> * Left click and drag : Look to another position<br> * Right click and drag : Move camera position in X and Y<br><br>Keyboard:<br> * 'h' : help<br><br>Voice commands (in development):<br><br> * use planet :id<br> * start music<br> * stop music"
 			});
-		 	gameEngine.sound.sample["computer_work_beep"].play();
+			
 		}
 
 		controls.update();
@@ -438,6 +441,7 @@ $(function() {
 				document.title = "";
 
 				// intro
+		 		gameEngine.sound.sample["system_alarm"].play();
 				window.setTimeout(function  () {
 				 	gameEngine.sound.sample["computer_work_beep"].play();
 					gameEngine.alert({
@@ -448,14 +452,14 @@ $(function() {
 
 					 	gameEngine.sound.sample["tng_warp4_clean"].play();
 						gameEngine.cam.move(gameEngine.planet(0), gameEngine.planet(0), gameEngine.planet(0), function(){
-							gameEngine.sound.music.play();
-							gameEngine.sound.sample["computer_work_beep"].play();
+							gameEngine.sound.sample["computer_work_beep_simple"].play();
 
 							gameEngine.cam.move({position:{x:3100,y:0,z:0},config:{size:10}}, gameEngine.planet(0), gameEngine.planet(0), function(){
 
 
 								gameEngine.camera.lookAt(gameEngine.planet(0).position(gameEngine.timeMachine() * 0.025));
 								gameEngine.sound.sample["computer_work_beep"].play();
+								gameEngine.sound.music.play();
 								gameEngine.alert({
 									type: "info",
 									seconds: 7,
@@ -465,7 +469,7 @@ $(function() {
 							});
 						});
 					});
-				},2000);
+				},6000);
 			});
 		});
 	}, function  (percentDone) {
