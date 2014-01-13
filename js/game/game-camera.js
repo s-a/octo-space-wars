@@ -34,7 +34,7 @@ var GameEngineCamera = function  (argument) {
 		   new THREE.Vector3(targetPosition.x + target.config.size*4,targetPosition.y - target.config.size*4, targetPosition.z + target.config.size*4)
 		]);
 
-		var splinePoints = spline.getPoints(350);
+		var splinePoints = spline.getPoints(450);
 
 		if (false) {
 			flowI = 0;
