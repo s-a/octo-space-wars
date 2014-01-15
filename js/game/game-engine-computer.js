@@ -50,8 +50,7 @@ var Computer = function(gameEngine){
 
 					});
 					source.units--;
-					source.setText();
-
+					source.setText(); 
 				} else {
 					gameEngine.sound.sample["computer_error"].play();
 				}

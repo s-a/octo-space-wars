@@ -1,10 +1,10 @@
 var gameConfig =  {
-	trackLinesEverFlyer : 10,
+	trackLinesEverFlyer : 50,
 	flyerTrackLine : {
-		opacity :  0.05 ,
+		opacity :  0.07 ,
 		color   : 0x66FF33
 	},
-	alienStrenth : 300
+	alienStrenth : 200
 }
 var Player = function  (color) {
 	if (color){
