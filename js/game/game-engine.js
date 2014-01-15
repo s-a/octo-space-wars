@@ -1,6 +1,14 @@
+var gameConfig =  {
+	trackLinesEverFlyer : 10,
+	flyerTrackLine : {
+		opacity :  0.05 ,
+		color   : 0x66FF33
+	},
+	alienStrenth : 300
+}
 var Player = function  (color) {
 	if (color){
-		this.color = new Color();
+		this.color = new Color(color);
 	} else {
 		this.color = new Color("#000000").random();
 	}
@@ -25,13 +33,7 @@ var GameEngine = function() {
 	this.planets = [];
 	this.clock = new THREE.Clock();
 	this.swarms = [];
-	this.config = {
-		trackLinesEverFlyer : 5,
-		flyerTrackLine : {
-			opacity :  0.05 ,
-    		color   : 0x66FF33
-		}
-	}
+	this.config = gameConfig;
 
 	this.sound = {};
 	this.sound.Music = function  () {
@@ -119,7 +121,6 @@ var GameEngine = function() {
 
 	this.cam = new GameEngineCamera();
 
-
 	this.onDocumentMouseDown= function( event ) {
 		event.preventDefault();
 		if (INTERSECTED){
@@ -162,7 +163,6 @@ var GameEngine = function() {
 
 		}
 	}
-
 
 	this.preload = function  (done, update) {
 		var materials = [
@@ -329,7 +329,6 @@ var GameEngine = function() {
 		return this.planets[planetId];
 	}
 
-
 	this.detectCollision = function (oldPostion, newPosition, distance) {
 
 		var projector = new THREE.Projector();
@@ -339,9 +338,16 @@ var GameEngine = function() {
 		var intersects = raycaster.intersectObjects( this.scene.children, true );
 	  	return (intersects.length > 0) && (intersects[0].distance <= distance);
 	}
-	function degInRad(deg) {
+
+
+	this.computer = new Computer(this);
+ 
+	
+
+	var degInRad = function(deg) {
 	    return deg * Math.PI / 180;
 	}
+
 	this.updateCamera = function  () {
 		if (this.cam.route.length>0){
 			var newPos = this.cam.route.shift();
@@ -363,6 +369,8 @@ var GameEngine = function() {
 		}
 	}
 
+
+
 	this.update = function(){
 	 	gameEngine.t0 = gameEngine.clock.getElapsedTime();
 
@@ -377,6 +385,26 @@ var GameEngine = function() {
 			
 		}
 
+
+		if ( keyboard.pressed("0") ){
+		 	gameEngine.sound.sample["tng_warp4_clean"].play();
+			gameEngine.cam.move({position:{x:3100,y:0,z:0},config:{size:10}}, gameEngine.planet(0), gameEngine.planet(0), function(){
+				gameEngine.camera.lookAt(gameEngine.planet(0).position(gameEngine.timeMachine() * 0.025));
+				gameEngine.sound.sample["computer_work_beep"].play();
+				gameEngine.sound.music.play();
+			});			
+		}
+
+		if ( keyboard.pressed("1") ){
+		 	gameEngine.sound.sample["tng_warp4_clean"].play();
+			gameEngine.cam.move(gameEngine.planets[gameEngine.planets.length-1], gameEngine.planet(0), gameEngine.planet(0), function(){
+				gameEngine.camera.lookAt(gameEngine.planet(0).position(gameEngine.timeMachine() * 0.025));
+				gameEngine.sound.sample["computer_work_beep"].play();
+				gameEngine.sound.music.play();
+			});			
+		}
+
+
 		controls.update();
 		stats.update();
 
@@ -385,7 +413,7 @@ var GameEngine = function() {
 
 		for (var s = 0; s < this.swarms.length; s++) {
 			var swarm = this.swarms[s];
-			swarm.move(s%this.config.trackLinesEverFlyer===0);
+			swarm.move(s%20===0);
 		};
 
 		for (var i = 0; i < this.planets.length; i++) {
@@ -419,7 +447,6 @@ var GameEngine = function() {
 
 	this.material = [];
 	this.sound.sample = [];
-
 }
 
 function animate() {
@@ -429,54 +456,4 @@ function animate() {
 	gameEngine.updateCamera();
 }
 
-
-$(function() {
-
-	window.gameEngine = new GameEngine(window);
-	gameEngine.preload(function() {
-		gameEngine.start();
-		$("#ThreeJS").fadeIn("fast", function() {
-			$topLoader.fadeOut("fast", function() {
-
-				document.title = "";
-
-				// intro
-		 		gameEngine.sound.sample["system_alarm"].play();
-				window.setTimeout(function  () {
-				 	gameEngine.sound.sample["computer_work_beep"].play();
-					gameEngine.alert({
-						type: "fatal",
-						seconds: 4,
-						msg:"Commander!<br>We are on red alert!<br>All systems are ready ..."
-					}, function() {
-
-					 	gameEngine.sound.sample["tng_warp4_clean"].play();
-						gameEngine.cam.move(gameEngine.planet(0), gameEngine.planet(0), gameEngine.planet(0), function(){
-							gameEngine.sound.sample["computer_work_beep_simple"].play();
-
-							gameEngine.cam.move({position:{x:3100,y:0,z:0},config:{size:10}}, gameEngine.planet(0), gameEngine.planet(0), function(){
-
-
-								gameEngine.camera.lookAt(gameEngine.planet(0).position(gameEngine.timeMachine() * 0.025));
-								gameEngine.sound.sample["computer_work_beep"].play();
-								gameEngine.sound.music.play();
-								gameEngine.alert({
-									type: "info",
-									seconds: 7,
-									msg:"Foreign powers fall into our system ...<br>Show no mercy!<br>Defend the habitat of our civilization and destroy them!<br><br>Good luck... (press 'h' for help)"
-								});
-
-							});
-						});
-					});
-				},6000);
-			});
-		});
-	}, function  (percentDone) {
-		document.title = percentDone + "%";
-		console.log(percentDone);
-		$topLoader.setProgress(percentDone / 100);
-	    $topLoader.setValue(100 - percentDone);
-	});
-});
 

@@ -7,87 +7,14 @@
 	<link rel=stylesheet href="css/base.css"/>
 	<link rel=stylesheet href="css/jquery-ui.css" />
 	<link rel=stylesheet href="css/info.css"/>
-    <link rel="stylesheet" href="css/jquery.percentageloader-0.1.css"></script>
 	<link rel="shortcut icon" href="images/favicon.ico" type="image/x-icon">
 	<link rel="icon" href="images/favicon.ico" type="image/x-icon">
-	<style type="text/css">
-      #topLoader {
-        width: 256px;
-        height: 256px;
-        margin-bottom: 32px;
-      }
-
-      #container {
-        width: 940px;
-        padding: 10px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      #animateButton {
-        width: 256px;
-      }
-
-			#alert{
-				position: absolute;
-				left:40px;
-				top:40px;
-
-				font-size: 30px;
-				display: none;
-			}
-
-			.alert-fatal{
-				color: #B31800;
-				text-shadow: 	0 0 10px #fff,
-				0 0 20px #fff,
-				0 0 30px #fff,
-				0 0 40px #FF0000,
-				0 0 70px #FF0000,
-				0 0 80px #FF0000,
-				0 0 100px #FF0000,
-				0 0 150px #FF0000;
-			}
-
-			.alert-info{
-				color: #000080;
-				text-shadow: 	0 0 10px #fff,
-				0 0 20px #fff,
-				0 0 30px #fff,
-				0 0 40px #4D4DFF,
-				0 0 70px #4D4DFF,
-				0 0 80px #4D4DFF,
-				0 0 100px #4D4DFF,
-				0 0 150px #4D4DFF;
-			}
-
-			.alert-success{
-				color: #009900;
-				text-shadow: 	0 0 10px #fff,
-				0 0 20px #fff,
-				0 0 30px #fff,
-				0 0 40px #00FF00,
-				0 0 70px #00FF00,
-				0 0 80px #00FF00,
-				0 0 100px #00FF00,
-				0 0 150px #00FF00;
-			}
-			body, html{
-				background-color: #000000;
-			}
-	</style>
 </head>
 <body>
-	<!-- <div id="infoButton"></div> -->
-	<div id="infoBox" title="Demo Information">
-		loading space...
-	</div>
+	<div id="infoButton"></div> 
 	<div id="ThreeJS" style="position: absolute; left:0px; top:0px;display:none;" ></div>
 	<div id="alert" style="" class="alert-fatal"></div>
- 	<div id="container">
-      <div id="topLoader">
-      </div>
-    </div>
+  	<div id="topLoader">loading space...</div>
 
 	<script src="js/Three.js"></script>
 	<script src="js/Detector.js"></script>
@@ -97,7 +24,6 @@
 	<script src="js/THREEx.FullScreen.js"></script>
 	<script src="js/THREEx.WindowResize.js"></script>
 	<script src="js/helvetiker_regular.typeface.js"></script>
-	<!-- Custom shaders for particle effects -->
 	<script type="x-shader/x-vertex" id="vertexshader">
 		uniform float time;
 		attribute vec3 customColor;
@@ -124,43 +50,18 @@
 			gl_FragColor = gl_FragColor * texture2D( texture, gl_PointCoord );
 		}
 	</script>
-	<!-- end of custom shaders -->
-	<!-- jQuery code to display an information button annyangd box when clicked. -->
 	<script src="js/jquery-1.9.1.js"></script>
-    <script src="js/jquery.percentageloader-0.1.js"></script>
-      <script>
-        $(function() {
-          window.$topLoader = $("#topLoader").percentageLoader({width: 256, height: 256, controllable : false, progress : 0 });
-        });
-      </script>
-
-	<script src="js/jquery-ui.js"></script>
-	<script src="js/info.js"></script>
-
 	<script src="js/game/color.js"></script>
 	<script src="js/game/game-class-planet.js"></script>
 	<script src="js/game/game-class-solar-system.js"></script>
 	<script src="js/game/game-class-flyer.js"></script>
 	<script src="js/game/game-class-flyer-swarm.js"></script>
 	<script src="js/game/game-camera.js"></script>
+	<script src="js/game/game-engine-computer.js"></script>
 	<script src="js/game/game-engine.js"></script>
 	<script src="js/game/game-data.js"></script>
     <script src="js/speech-router.js"></script>
-    <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/1.1.0/annyang.min.js"></script>
-    <script type="text/javascript">
-        new SpeechRouter({
-		    routes: {
-		        "use planet :id": function (id) {
-		            document.title = id;
-		        },
-		        "start music": function () {
-		            document.title = "start music";
-		        },
-		        "stop music": function () {
-		            document.title = "stop music";
-		        },
-		    }
-		}).start();
-    </script>
+    <script src="js/annyang.min.js"></script>
+	<script src="js/main.js"></script>
 </body>
 </html>

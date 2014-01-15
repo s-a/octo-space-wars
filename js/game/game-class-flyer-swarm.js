@@ -12,7 +12,7 @@ var FlyerSwarm = function(gameEngine, config, callback){
 
 	var  targetHitTime;
 	var material = new THREE.LineBasicMaterial({
-	    color: gameEngine.config.flyerTrackLine.color,
+	    color: config.source.player.color.hex(),
 	    transparent: true,
 	    opacity: gameEngine.config.flyerTrackLine.opacity
 	});
