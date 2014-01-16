@@ -1,7 +1,22 @@
+/**
+ * Description
+ * @class Flyer
+ * @constructor
+ * @param {} gameEngine
+ * @param {} swarm
+ * @param {} config
+ * @param {} target
+ * @return ThisExpression
+ */
 var Flyer = function(gameEngine, swarm, config, target) {
 
 	this.config=config;
 
+	/**
+	 * Description
+	 * @method detectCollision
+	 * @return 
+	 */
 	function detectCollision() {
 	  var vector = target.clone().subSelf( source.position ).normalize();
 	  var ray = new THREE.Ray(source.position, vector);
@@ -14,6 +29,11 @@ var Flyer = function(gameEngine, swarm, config, target) {
 	  }
 	}
 
+	/**
+	 * Description
+	 * @method computeSecureTrack
+	 * @return 
+	 */
 	this.computeSecureTrack = function  () {
 		// body...
 	}
@@ -25,6 +45,11 @@ var Flyer = function(gameEngine, swarm, config, target) {
 		gameEngine.attributes.customOffset.value[ v ] = 1 ; // not really used in shaders, move elsewhere
 	}
 
+	/**
+	 * Description
+	 * @method position
+	 * @return 
+	 */
 	this.position = function() {
 
 	}

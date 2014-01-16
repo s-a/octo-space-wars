@@ -9,8 +9,10 @@ A Web GL Octo "spaceWarSimulation" experiment
 ***Demo***
 http://s-a.github.io/octo-space-wars/
 
+***JavaScript API docs***
+http://s-a.github.io/octo-space-wars/js/game/out/
+
 ***Todo***
-* Write a bot player
 * Increase credits and flyers for all players on each planet per game round
 * Attack enemy planet on left click
 * Defend own planet on right click

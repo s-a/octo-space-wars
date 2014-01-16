@@ -1,3 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>game-engine.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/Color.html">Color</a></li>
+            
+                <li><a href="../classes/Computer.html">Computer</a></li>
+            
+                <li><a href="../classes/Flyer.html">Flyer</a></li>
+            
+                <li><a href="../classes/FlyerSwarm.html">FlyerSwarm</a></li>
+            
+                <li><a href="../classes/GameEngine.html">GameEngine</a></li>
+            
+                <li><a href="../classes/GameEngineCamera.html">GameEngineCamera</a></li>
+            
+                <li><a href="../classes/Planet.html">Planet</a></li>
+            
+                <li><a href="../classes/Player.html">Player</a></li>
+            
+                <li><a href="../classes/SolarSystem.html">SolarSystem</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: game-engine.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
 var gameConfig =  {
 	trackLinesEverFlyer : 50,
 	flyerTrackLine : {
@@ -17,14 +121,14 @@ var Player = function  (color) {
 	if (color){
 		this.color = new Color(color);
 	} else {
-		this.color = new Color("#000000").random();
+		this.color = new Color(&quot;#000000&quot;).random();
 	}
 	return this;
 }
 // Array Remove - By John Resig (MIT Licensed) 
 Array.prototype.remove = function(from, to) {
   var rest = this.slice((to || from) + 1 || this.length);
-  this.length = from < 0 ? this.length + from : from;
+  this.length = from &lt; 0 ? this.length + from : from;
   return this.push.apply(this, rest);
 };
 
@@ -57,10 +161,10 @@ var GameEngine = function() {
 	 * @return audio
 	 */
 	this.sound.Music = function  () {
-	 	var audio = document.createElement('audio');
-		var source = document.createElement('source');
+	 	var audio = document.createElement(&#x27;audio&#x27;);
+		var source = document.createElement(&#x27;source&#x27;);
 
-		source.src = window.location.pathname.replace("game.html", "") + 'sound/track' + (Math.floor(Math.random()*2)+1 /*track length*/) + '.mp3';
+		source.src = window.location.pathname.replace(&quot;game.html&quot;, &quot;&quot;) + &#x27;sound/track&#x27; + (Math.floor(Math.random()*2)+1 /*track length*/) + &#x27;.mp3&#x27;;
 		audio.appendChild(source);
 		return audio;
 	}
@@ -74,13 +178,13 @@ var GameEngine = function() {
 	 * @return audio
 	 */
 	this.sound.Sample = function(sample, volume, onLoad) {
-	 	var audio = document.createElement('audio');
-		var source = document.createElement('source');
+	 	var audio = document.createElement(&#x27;audio&#x27;);
+		var source = document.createElement(&#x27;source&#x27;);
 		audio.volume = volume || 0.9;
-		audio.addEventListener('canplaythrough',   function() {
+		audio.addEventListener(&#x27;canplaythrough&#x27;,   function() {
 			onLoad();
 		}, false);
-		source.src = 'sound/' + sample + '.mp3';
+		source.src = &#x27;sound/&#x27; + sample + &#x27;.mp3&#x27;;
 		audio.appendChild(source);
 
 		return audio;
@@ -119,7 +223,7 @@ var GameEngine = function() {
 	 * @return 
 	 */
 	this.render = function(){
-		for (var i = 0; i < this.planets.length; i++) {
+		for (var i = 0; i &lt; this.planets.length; i++) {
 			var planet = this.planets[i];
 			planet.render(this.scene);
 		};
@@ -132,8 +236,8 @@ var GameEngine = function() {
 				raycaster.set( this.camera.position, vector.sub( this.camera.position ).normalize() );
 				var intersects = raycaster.intersectObjects( this.scene.children, true );
 
-				if ( intersects.length > 0 ) {
-					if ( intersects[ 0 ].object.userData.planet && intersects[ 0 ].object.userData.planet.text &&  INTERSECTED != intersects[ 0 ].object ) {
+				if ( intersects.length &gt; 0 ) {
+					if ( intersects[ 0 ].object.userData.planet &amp;&amp; intersects[ 0 ].object.userData.planet.text &amp;&amp;  INTERSECTED != intersects[ 0 ].object ) {
 						if ( INTERSECTED ) {
 							INTERSECTED.material.color = INTERSECTED.currentHex;
 							INTERSECTED.userData.planet.text.material.color = INTERSECTED.currentHex;
@@ -182,7 +286,7 @@ var GameEngine = function() {
 		if (INTERSECTED){
 			var source = INTERSECTED.userData.planet;
 			var exclude = [0];
-			for (var i = 0; i < gameEngine.planets.length; i++) {
+			for (var i = 0; i &lt; gameEngine.planets.length; i++) {
 				var p = gameEngine.planets[i]
 				if (p.player.color.equal(source.player.color)){
 					exclude.push(p.id);
@@ -190,7 +294,7 @@ var GameEngine = function() {
 				}
 			};
 			if (gameEngine.planets.length === exclude.length) {
-				gameEngine.sound.sample["computer_error"].play();
+				gameEngine.sound.sample[&quot;computer_error&quot;].play();
 				return;
 			}
 			var target = gameEngine.randomPlanet(exclude);
@@ -207,35 +311,35 @@ var GameEngine = function() {
 	 */
 	this.preload = function  (done, update) {
 		var materials = [
-			"nebula-zpos.png",
-			"nebula-zneg.png",
-			"nebula-ypos.png",
-			"nebula-yneg.png",
-			"nebula-xpos.png",
-			"nebula-xneg.png",
-			"venusmap.jpg",
-			"mercurymap.jpg",
-			"mercurybump.jpg",
-			"mars_1k_color.jpg",
-			"jupitermap.jpg",
-			"sunmap.jpg"
+			&quot;nebula-zpos.png&quot;,
+			&quot;nebula-zneg.png&quot;,
+			&quot;nebula-ypos.png&quot;,
+			&quot;nebula-yneg.png&quot;,
+			&quot;nebula-xpos.png&quot;,
+			&quot;nebula-xneg.png&quot;,
+			&quot;venusmap.jpg&quot;,
+			&quot;mercurymap.jpg&quot;,
+			&quot;mercurybump.jpg&quot;,
+			&quot;mars_1k_color.jpg&quot;,
+			&quot;jupitermap.jpg&quot;,
+			&quot;sunmap.jpg&quot;
 		];
 
 		var sounds = [
-			{name : "autodefense_ep", volume : 0.1},
-			{name : "tng_warp4_clean", volume : 1},
-			{name : "smallexplosion1", volume : 0.7},
-			{name : "computer_error", volume : 1},
-			{name : "computer_work_beep", volume : 1},
-			{name : "computer_work_beep_simple", volume : 1},
-			{name : "system_alarm", volume : 0.6}
+			{name : &quot;autodefense_ep&quot;, volume : 0.1},
+			{name : &quot;tng_warp4_clean&quot;, volume : 1},
+			{name : &quot;smallexplosion1&quot;, volume : 0.7},
+			{name : &quot;computer_error&quot;, volume : 1},
+			{name : &quot;computer_work_beep&quot;, volume : 1},
+			{name : &quot;computer_work_beep_simple&quot;, volume : 1},
+			{name : &quot;system_alarm&quot;, volume : 0.6}
 		];
 
 		var all = materials.length;
  		var currentIndex = 0;
-		for (var i = 0; i < materials.length; i++) {
+		for (var i = 0; i &lt; materials.length; i++) {
 			var m = materials[i];
-			this.material[m] = THREE.ImageUtils.loadTexture( "images/" + m, null	, function(){
+			this.material[m] = THREE.ImageUtils.loadTexture( &quot;images/&quot; + m, null	, function(){
 				all--;
 				if (all===0) loadSounds();
 				currentIndex++;
@@ -251,7 +355,7 @@ var GameEngine = function() {
 		 */
 		var loadSounds = function() {
 			all = sounds.length;
-			for (var i = 0; i < sounds.length; i++) {
+			for (var i = 0; i &lt; sounds.length; i++) {
 				var m = sounds[i];
 
 				gameEngine.sound.sample[m.name] = new gameEngine.sound.Sample(m.name, m.volume, function(){
@@ -274,8 +378,8 @@ var GameEngine = function() {
 	 */
 	this.init = function(){
 
-		document.addEventListener( 'mousemove', this.onDocumentMouseMove, false );
-		document.addEventListener( 'mousedown', this.onDocumentMouseDown, false );
+		document.addEventListener( &#x27;mousemove&#x27;, this.onDocumentMouseMove, false );
+		document.addEventListener( &#x27;mousedown&#x27;, this.onDocumentMouseDown, false );
 		// SCENE
 		this.scene = new THREE.Scene();
 		// CAMERA
@@ -295,17 +399,17 @@ var GameEngine = function() {
 			renderer = new THREE.CanvasRenderer();
 	    renderer.setClearColor(0x000000, 1);
 		renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-		container = document.getElementById( 'ThreeJS' );
+		container = document.getElementById( &#x27;ThreeJS&#x27; );
 		container.appendChild( renderer.domElement );
 		// EVENTS
 		THREEx.WindowResize(renderer, this.camera);
-		THREEx.FullScreen.bindKey({ charCode : 'm'.charCodeAt(0) });
+		THREEx.FullScreen.bindKey({ charCode : &#x27;m&#x27;.charCodeAt(0) });
 		// CONTROLS
 		controls = new THREE.OrbitControls( this.camera, renderer.domElement );
 		// STATS
 		stats = new Stats();
-		stats.domElement.style.position = 'absolute';
-		stats.domElement.style.bottom = '0px';
+		stats.domElement.style.position = &#x27;absolute&#x27;;
+		stats.domElement.style.bottom = &#x27;0px&#x27;;
 		stats.domElement.style.zIndex = 100;
 		container.appendChild( stats.domElement );
 
@@ -313,13 +417,13 @@ var GameEngine = function() {
 
 		// FLOOR
 			// SKYBOX/FOG
-			 var imagePrefix = "images/nebula-";
-			var directions  = ["xpos", "xneg", "ypos", "yneg", "zpos", "zneg"];
-			var imageSuffix = ".png";
+			 var imagePrefix = &quot;images/nebula-&quot;;
+			var directions  = [&quot;xpos&quot;, &quot;xneg&quot;, &quot;ypos&quot;, &quot;yneg&quot;, &quot;zpos&quot;, &quot;zneg&quot;];
+			var imageSuffix = &quot;.png&quot;;
 			var skyGeometry = new THREE.CubeGeometry( 5000, 5000, 5000 );
 
 			var materialArray = [];
-			for (var i = 0; i < 600; i++)
+			for (var i = 0; i &lt; 600; i++)
 				materialArray.push( new THREE.MeshBasicMaterial({
 					map: THREE.ImageUtils.loadTexture( imagePrefix + directions[i] + imageSuffix ),
 					side: THREE.BackSide
@@ -331,17 +435,17 @@ var GameEngine = function() {
 			// CUSTOM //
 			////////////
 		// values that are constant for all particles during a draw call
-		var discTexture = THREE.ImageUtils.loadTexture( 'images/disc.png' );
+		var discTexture = THREE.ImageUtils.loadTexture( &#x27;images/disc.png&#x27; );
 		this.uniforms = {
-			time:      { type: "f", value: 1.0 },
-			texture:   { type: "t", value: discTexture },
+			time:      { type: &quot;f&quot;, value: 1.0 },
+			texture:   { type: &quot;t&quot;, value: discTexture },
 		};
 		// properties that may vary from particle to particle.
 		// these values can only be accessed in vertex shaders!
 		//  (pass info to fragment shader via vColor.)
 		this.attributes = {
-			customColor:	 { type: 'c',  value: [] },
-			customOffset:	 { type: 'f',  value: [] },
+			customColor:	 { type: &#x27;c&#x27;,  value: [] },
+			customOffset:	 { type: &#x27;f&#x27;,  value: [] },
 		};
 
 				/**
@@ -360,7 +464,7 @@ var GameEngine = function() {
 					if ( total )
 						bar = Math.floor( bar * loaded / total );
 
-					$( "bar" ).style.width = bar + "px";
+					$( &quot;bar&quot; ).style.width = bar + &quot;px&quot;;
 
 					count = 0;
 					for ( var m in result.materials ) count++;
@@ -413,7 +517,7 @@ var GameEngine = function() {
 		projector.unprojectVector( vector, this.camera );
 		raycaster.set( newPosition, vector.sub( newPosition ).normalize() );
 		var intersects = raycaster.intersectObjects( this.scene.children, true );
-	  	return (intersects.length > 0) && (intersects[0].distance <= distance);
+	  	return (intersects.length &gt; 0) &amp;&amp; (intersects[0].distance &lt;= distance);
 	}
 
 
@@ -437,7 +541,7 @@ var GameEngine = function() {
 	 * @return 
 	 */
 	this.updateCamera = function  () {
-		if (this.cam.route.length>0){
+		if (this.cam.route.length&gt;0){
 			var newPos = this.cam.route.shift();
 		/*		while (this.detectCollision(this.camera.position, newPos, 300)){
 				newPos.x=newPos.x+1;
@@ -467,32 +571,32 @@ var GameEngine = function() {
 	this.update = function(){
 	 	gameEngine.t0 = gameEngine.clock.getElapsedTime();
 
-		if ( keyboard.pressed("h") ){
+		if ( keyboard.pressed(&quot;h&quot;) ){
 
-		 	gameEngine.sound.sample["computer_work_beep_simple"].play();
+		 	gameEngine.sound.sample[&quot;computer_work_beep_simple&quot;].play();
 			gameEngine.alert({
-				type: "info",
+				type: &quot;info&quot;,
 				seconds: 7,
-				msg:"octoSpaceWars v" + this.version + " alpha help<br><br>Mouse:<br> * Wheel : Zoom in / out<br> * Left click and drag : Look to another position<br> * Right click and drag : Move camera position in X and Y<br><br>Keyboard:<br> * 'h' : help<br><br>Voice commands (in development):<br><br> * use planet :id<br> * start music<br> * stop music"
+				msg:&quot;octoSpaceWars v&quot; + this.version + &quot; alpha help&lt;br&gt;&lt;br&gt;Mouse:&lt;br&gt; * Wheel : Zoom in / out&lt;br&gt; * Left click and drag : Look to another position&lt;br&gt; * Right click and drag : Move camera position in X and Y&lt;br&gt;&lt;br&gt;Keyboard:&lt;br&gt; * &#x27;h&#x27; : help&lt;br&gt;&lt;br&gt;Voice commands (in development):&lt;br&gt;&lt;br&gt; * use planet :id&lt;br&gt; * start music&lt;br&gt; * stop music&quot;
 			});
 			
 		}
 
 
-		if ( keyboard.pressed("0") ){
-		 	gameEngine.sound.sample["tng_warp4_clean"].play();
+		if ( keyboard.pressed(&quot;0&quot;) ){
+		 	gameEngine.sound.sample[&quot;tng_warp4_clean&quot;].play();
 			gameEngine.cam.move({position:{x:3100,y:0,z:0},config:{size:10}}, gameEngine.planet(0), gameEngine.planet(0), function(){
 				gameEngine.camera.lookAt(gameEngine.planet(0).position(gameEngine.timeMachine() * 0.025));
-				gameEngine.sound.sample["computer_work_beep"].play();
+				gameEngine.sound.sample[&quot;computer_work_beep&quot;].play();
 				gameEngine.sound.music.play();
 			});			
 		}
 
-		if ( keyboard.pressed("1") ){
-		 	gameEngine.sound.sample["tng_warp4_clean"].play();
+		if ( keyboard.pressed(&quot;1&quot;) ){
+		 	gameEngine.sound.sample[&quot;tng_warp4_clean&quot;].play();
 			gameEngine.cam.move(gameEngine.planets[gameEngine.planets.length-1], gameEngine.planet(0), gameEngine.planet(0), function(){
 				gameEngine.camera.lookAt(gameEngine.planet(0).position(gameEngine.timeMachine() * 0.025));
-				gameEngine.sound.sample["computer_work_beep"].play();
+				gameEngine.sound.sample[&quot;computer_work_beep&quot;].play();
 				gameEngine.sound.music.play();
 			});			
 		}
@@ -504,12 +608,12 @@ var GameEngine = function() {
 	  	this.t0 = this.clock.getElapsedTime();
 		this.uniforms.time.value = this.timeMachine(this.t0);
 
-		for (var s = 0; s < this.swarms.length; s++) {
+		for (var s = 0; s &lt; this.swarms.length; s++) {
 			var swarm = this.swarms[s];
 			swarm.move(s%20===0);
 		};
 
-		for (var i = 0; i < this.planets.length; i++) {
+		for (var i = 0; i &lt; this.planets.length; i++) {
 			var planet = this.planets[i];
 			var pos = planet.position(this.uniforms.time.value);
 			planet.move(pos.x,pos.y,pos.z);
@@ -545,10 +649,10 @@ var GameEngine = function() {
 	 * @return 
 	 */
 	this.alert = function(a, callback) {
-		$("#alert").attr("class", "").addClass("alert-" + (a.type || "fatal")).html(a.msg);
+		$(&quot;#alert&quot;).attr(&quot;class&quot;, &quot;&quot;).addClass(&quot;alert-&quot; + (a.type || &quot;fatal&quot;)).html(a.msg);
 
-		var c1 = "#B31800";
-		var c2 = "#fff";
+		var c1 = &quot;#B31800&quot;;
+		var c2 = &quot;#fff&quot;;
 		
 		if (a.color) {
 			c1 = a.color.hex();
@@ -556,13 +660,13 @@ var GameEngine = function() {
 		} else {
 			c2 = new Color(c1).lum(0.5).hex();
 		}
-	 	$("#alert").css({
-	 		"color": c1,
-	 		"text-shadow": "0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px " + c2 + ", 0 0 70px " + c2 + ", 0 0 80px " + c2 + ", 0 0 100px " + c2 + ", 0 0 150px " + c2
-	 	}).fadeIn("slow", function() {
+	 	$(&quot;#alert&quot;).css({
+	 		&quot;color&quot;: c1,
+	 		&quot;text-shadow&quot;: &quot;0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px &quot; + c2 + &quot;, 0 0 70px &quot; + c2 + &quot;, 0 0 80px &quot; + c2 + &quot;, 0 0 100px &quot; + c2 + &quot;, 0 0 150px &quot; + c2
+	 	}).fadeIn(&quot;slow&quot;, function() {
 		 	window.clearTimeout(msgTimer);
 		 	msgTimer = window.setTimeout(function() {
-		 		$("#alert").fadeOut("slow", function() {
+		 		$(&quot;#alert&quot;).fadeOut(&quot;slow&quot;, function() {
 		 			if (callback) callback();
 		 		});
 		 	}, a.seconds*1000);
@@ -586,3 +690,23 @@ function animate() {
 }
 
 
+
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

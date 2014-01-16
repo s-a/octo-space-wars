@@ -1,0 +1,2421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>GameEngine</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/Color.html">Color</a></li>
+            
+                <li><a href="../classes/Computer.html">Computer</a></li>
+            
+                <li><a href="../classes/Flyer.html">Flyer</a></li>
+            
+                <li><a href="../classes/FlyerSwarm.html">FlyerSwarm</a></li>
+            
+                <li><a href="../classes/GameEngine.html">GameEngine</a></li>
+            
+                <li><a href="../classes/GameEngineCamera.html">GameEngineCamera</a></li>
+            
+                <li><a href="../classes/Planet.html">Planet</a></li>
+            
+                <li><a href="../classes/Player.html">Player</a></li>
+            
+                <li><a href="../classes/SolarSystem.html">SolarSystem</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1>GameEngine Class</h1>
+<div class="box meta">
+    
+
+    
+
+    
+        <div class="foundat">
+            Defined in: <a href="../files/game-engine.js.html#l32"><code>game-engine.js:32</code></a>
+        </div>
+    
+
+    
+
+    
+</div>
+
+
+
+<div class="box intro">
+    <p>Description</p>
+
+</div>
+
+
+    <div class="constructor">
+        <h2>Constructor</h2>
+        <div id="method_GameEngine" class="method item">
+    <h3 class="name"><code>GameEngine</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l32"><code>game-engine.js:32</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                    <p>ThisExpression</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+    </div>
+
+
+<div id="classdocs" class="tabview">
+    <ul class="api-class-tabs">
+        <li class="api-class-tab index"><a href="#index">Index</a></li>
+
+        
+            <li class="api-class-tab methods"><a href="#methods">Methods</a></li>
+        
+        
+        
+        
+    </ul>
+
+    <div>
+        <div id="index" class="api-class-tabpanel index">
+            <h2 class="off-left">Item Index</h2>
+
+            
+                <div class="index-section methods">
+                    <h3>Methods</h3>
+
+                    <ul class="index-list methods">
+                        
+                            <li class="index-item method">
+                                <a href="#method_alert">alert</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_animate">animate</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_callbackProgress">callbackProgress</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_computeSecurePath">computeSecurePath</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_degInRad">degInRad</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_detectCollision">detectCollision</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_init">init</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_loadSounds">loadSounds</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Music">Music</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Navigation">Navigation</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_onDocumentMouseDown">onDocumentMouseDown</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_onDocumentMouseMove">onDocumentMouseMove</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_planet">planet</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_preload">preload</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_randomPlanet">randomPlanet</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_render">render</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_Sample">Sample</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_start">start</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_timeMachine">timeMachine</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_update">update</a>
+
+                                
+                                
+                            </li>
+                        
+                            <li class="index-item method">
+                                <a href="#method_updateCamera">updateCamera</a>
+
+                                
+                                
+                            </li>
+                        
+                    </ul>
+                </div>
+            
+
+            
+
+            
+
+            
+        </div>
+
+        
+            <div id="methods" class="api-class-tabpanel">
+                <h2 class="off-left">Methods</h2>
+
+                
+                    <div id="method_alert" class="method item">
+    <h3 class="name"><code>alert</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>a</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>callback</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l540"><code>game-engine.js:540</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">a</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">callback</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_animate" class="method item">
+    <h3 class="name"><code>animate</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l576"><code>game-engine.js:576</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_callbackProgress" class="method item">
+    <h3 class="name"><code>callbackProgress</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>progress</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>result</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l347"><code>game-engine.js:347</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">progress</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">result</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_computeSecurePath" class="method item">
+    <h3 class="name"><code>computeSecurePath</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>setup</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l97"><code>game-engine.js:97</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">setup</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                    <p>CallExpression</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_degInRad" class="method item">
+    <h3 class="name"><code>degInRad</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>deg</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l424"><code>game-engine.js:424</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">deg</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                    <p>BinaryExpression</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_detectCollision" class="method item">
+    <h3 class="name"><code>detectCollision</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>oldPostion</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>newPosition</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>distance</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l401"><code>game-engine.js:401</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">oldPostion</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">newPosition</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">distance</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                    <p>LogicalExpression</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_init" class="method item">
+    <h3 class="name"><code>init</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l270"><code>game-engine.js:270</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_loadSounds" class="method item">
+    <h3 class="name"><code>loadSounds</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l247"><code>game-engine.js:247</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Music" class="method item">
+    <h3 class="name"><code>Music</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l54"><code>game-engine.js:54</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                    <p>audio</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Navigation" class="method item">
+    <h3 class="name"><code>Navigation</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l91"><code>game-engine.js:91</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                    <p>ThisExpression</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_onDocumentMouseDown" class="method item">
+    <h3 class="name"><code>onDocumentMouseDown</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l174"><code>game-engine.js:174</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">event</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_onDocumentMouseMove" class="method item">
+    <h3 class="name"><code>onDocumentMouseMove</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>event</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l160"><code>game-engine.js:160</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">event</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_planet" class="method item">
+    <h3 class="name"><code>planet</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>i</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l529"><code>game-engine.js:529</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">i</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                    <p>MemberExpression</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_preload" class="method item">
+    <h3 class="name"><code>preload</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>done</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>update</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l201"><code>game-engine.js:201</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">done</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">update</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_randomPlanet" class="method item">
+    <h3 class="name"><code>randomPlanet</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>ignore</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l385"><code>game-engine.js:385</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">ignore</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                    <p>MemberExpression</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_render" class="method item">
+    <h3 class="name"><code>render</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l116"><code>game-engine.js:116</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_Sample" class="method item">
+    <h3 class="name"><code>Sample</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>sample</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>volume</code>
+                    
+                </li>
+            
+                <li class="arg">
+                    
+                        <code>onLoad</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l68"><code>game-engine.js:68</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">sample</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">volume</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+                <li class="param">
+                    
+                        <code class="param-name">onLoad</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                    <p>audio</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_start" class="method item">
+    <h3 class="name"><code>start</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l374"><code>game-engine.js:374</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_timeMachine" class="method item">
+    <h3 class="name"><code>timeMachine</code></h3>
+
+    
+        <div class="args">
+            <span class="paren">(</span><ul class="args-list inline commas">
+            
+                <li class="arg">
+                    
+                        <code>elapsedTime</code>
+                    
+                </li>
+            
+            </ul><span class="paren">)</span>
+        </div>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l519"><code>game-engine.js:519</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+        <div class="params">
+            <h4>Parameters:</h4>
+
+            <ul class="params-list">
+            
+                <li class="param">
+                    
+                        <code class="param-name">elapsedTime</code>
+                        <span class="type">Object</span>
+                    
+
+                    
+
+                    <div class="param-description">
+                         
+                    </div>
+
+                    
+                </li>
+            
+            </ul>
+        </div>
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                    <p>LogicalExpression</p>
+
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_update" class="method item">
+    <h3 class="name"><code>update</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l462"><code>game-engine.js:462</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+                    <div id="method_updateCamera" class="method item">
+    <h3 class="name"><code>updateCamera</code></h3>
+
+    
+        <span class="paren">()</span>
+    
+
+    
+        <span class="returns-inline">
+            <span class="type"></span>
+        </span>
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    <div class="meta">
+        
+            
+                
+                <p>
+                
+                Defined in
+                
+            
+        
+        
+        <a href="../files/game-engine.js.html#l434"><code>game-engine.js:434</code></a>
+        
+        </p>
+
+
+        
+
+        
+    </div>
+
+    <div class="description">
+        <p>Description</p>
+
+    </div>
+
+    
+
+    
+        <div class="returns">
+            <h4>Returns:</h4>
+
+            <div class="returns-description">
+                
+                    
+                
+            </div>
+        </div>
+    
+
+    
+</div>
+
+                
+            </div>
+        
+
+        
+
+        
+
+        
+    </div>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

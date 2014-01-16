@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>game-class-flyer-swarm.js</title>
+    <link rel="stylesheet" href="http://yui.yahooapis.com/3.9.1/build/cssgrids/cssgrids-min.css">
+    <link rel="stylesheet" href="../assets/vendor/prettify/prettify-min.css">
+    <link rel="stylesheet" href="../assets/css/main.css" id="site_styles">
+    <link rel="shortcut icon" type="image/png" href="../assets/favicon.png">
+    <script src="http://yui.yahooapis.com/combo?3.9.1/build/yui/yui-min.js"></script>
+</head>
+<body class="yui3-skin-sam">
+
+<div id="doc">
+    <div id="hd" class="yui3-g header">
+        <div class="yui3-u-3-4">
+            
+                <h1><img src="../assets/css/logo.png" title=""></h1>
+            
+        </div>
+        <div class="yui3-u-1-4 version">
+            <em>API Docs for: </em>
+        </div>
+    </div>
+    <div id="bd" class="yui3-g">
+
+        <div class="yui3-u-1-4">
+            <div id="docs-sidebar" class="sidebar apidocs">
+                <div id="api-list">
+    <h2 class="off-left">APIs</h2>
+    <div id="api-tabview" class="tabview">
+        <ul class="tabs">
+            <li><a href="#api-classes">Classes</a></li>
+            <li><a href="#api-modules">Modules</a></li>
+        </ul>
+
+        <div id="api-tabview-filter">
+            <input type="search" id="api-filter" placeholder="Type to filter APIs">
+        </div>
+
+        <div id="api-tabview-panel">
+            <ul id="api-classes" class="apis classes">
+            
+                <li><a href="../classes/Color.html">Color</a></li>
+            
+                <li><a href="../classes/Computer.html">Computer</a></li>
+            
+                <li><a href="../classes/Flyer.html">Flyer</a></li>
+            
+                <li><a href="../classes/FlyerSwarm.html">FlyerSwarm</a></li>
+            
+                <li><a href="../classes/GameEngine.html">GameEngine</a></li>
+            
+                <li><a href="../classes/GameEngineCamera.html">GameEngineCamera</a></li>
+            
+                <li><a href="../classes/Planet.html">Planet</a></li>
+            
+                <li><a href="../classes/Player.html">Player</a></li>
+            
+                <li><a href="../classes/SolarSystem.html">SolarSystem</a></li>
+            
+            </ul>
+
+            <ul id="api-modules" class="apis modules">
+            
+            </ul>
+        </div>
+    </div>
+</div>
+
+            </div>
+        </div>
+        <div class="yui3-u-3-4">
+                <div id="api-options">
+        Show:
+        <label for="api-show-inherited">
+            <input type="checkbox" id="api-show-inherited" checked>
+            Inherited
+        </label>
+
+        <label for="api-show-protected">
+            <input type="checkbox" id="api-show-protected">
+            Protected
+        </label>
+
+        <label for="api-show-private">
+            <input type="checkbox" id="api-show-private">
+            Private
+        </label>
+        <label for="api-show-deprecated">
+            <input type="checkbox" id="api-show-deprecated">
+            Deprecated
+        </label>
+
+    </div>
+
+
+            <div class="apidocs">
+                <div id="docs-main">
+                    <div class="content">
+                        <h1 class="file-heading">File: game-class-flyer-swarm.js</h1>
+
+<div class="file">
+    <pre class="code prettyprint linenums">
+var FID=-1;
+/**
+ * Description
+ * @class FlyerSwarm
+ * @constructor
+ * @param {} gameEngine
+ * @param {} config
+ * @param {} callback
+ * @return ThisExpression
+ */
+var FlyerSwarm = function(gameEngine, config, callback){
+	 
+	var count = 1;
+	var geometry = new THREE.Geometry();
+	var bezier;
+	var splinePoints;
+	var targetHitTime = null;
+	var numPoints = 400;
+	var sourcePosition;
+
+
+	var  targetHitTime;
+	var material = new THREE.LineBasicMaterial({
+	    color: config.source.player.color.hex(),
+	    transparent: true,
+	    opacity: gameEngine.config.flyerTrackLine.opacity
+	});
+	var line ;
+	FID = FID+1;
+	this.id = FID;
+	this.target = config.target;
+	this.source = config.source;
+	this.particleGeometry = new THREE.Geometry();
+	this.flyer = [];
+	this.clock = new THREE.Clock();
+	var attackTimer =  10;
+	var distance  ;
+
+	/**
+	 * Description
+	 * @method speed
+	 * @return 
+	 */
+	var speed = function() {
+		// body...
+	}
+	var distance;
+
+	/**
+	 * Description
+	 * @method flyerPosition
+	 * @param {} timeOffset
+	 * @param {} index
+	 * @param {} source
+	 * @param {} target
+	 * @param {} drawline
+	 * @return NewExpression
+	 */
+	this.flyerPosition = function(timeOffset, index, source, target, drawline){
+
+		//var t = target.position(gameEngine.timeMachine());
+		//console.log(this.targetPosition);
+		if (!this.targetPosition) {
+			distance = source.distance(target, timeOffset);//point;
+		 	targetHitTime = (timeOffset)+ (distance / attackTimer);
+			var s = source.position(gameEngine.timeMachine()*0.025);
+			//console.log(targetHitTime);
+			this.targetPosition = target.position((gameEngine.timeMachine() + attackTimer) * 0.025);
+
+ 
+		 	sourcePosition = s;
+			spline = new THREE.SplineCurve3([
+			   new THREE.Vector3(sourcePosition.x,sourcePosition.y,sourcePosition.z),
+			   new THREE.Vector3(sourcePosition.x+40,sourcePosition.y-20,sourcePosition.z+40),
+			   new THREE.Vector3(this.targetPosition.x,this.targetPosition.y,this.targetPosition.z)
+			]);
+			splinePoints = spline.getPoints(distance);
+			flowI = 0;
+			for(var i = 0; i &lt; splinePoints.length; i++){
+			    geometry.vertices.push(splinePoints[i]);
+			}
+			if (drawline) {
+				for(var i = 0; i &lt; splinePoints.length; i++){
+				    geometry.vertices.push(splinePoints[i]);
+				}
+	 	 		line = new THREE.Line(geometry, material);
+				gameEngine.scene.add(line);
+			}
+
+
+			//console.log(line)
+		}
+	 //document.title = xx;
+
+		// smooth my curve over this many points
+	 	var xx = (distance / attackTimer) * this.clock.getElapsedTime();
+		var point = Math.floor(xx);
+		//document.title = xx;
+		var vPoint = splinePoints[point+(index)];
+		if (vPoint){
+			var x = vPoint.x ;//+ ((index*2) + index%2)*Math.sin(uniforms.time.value);
+			var y = vPoint.y ;//+ (index/2)/t0*0.025;
+			var z = vPoint.z ;//+ vPoint.y%2+index/2.5;
+		} else {
+		}
+		
+		//		document.title = targetHitTime +&quot;,&quot;+ gameEngine.timeMachine()*0.025 + (gameEngine.timeMachine()*0.025&gt;targetHitTime);
+		return new THREE.Vector3(x,y,z);
+	}
+
+	for (var i = 0; i &lt; count; i++) this.flyer.push(new Flyer(gameEngine, this, config));
+	var shaderMaterial = new THREE.ShaderMaterial({
+		uniforms: 		gameEngine.uniforms,
+		attributes:     gameEngine.attributes,
+		vertexShader:   document.getElementById( &#x27;vertexshader&#x27; ).textContent,
+		fragmentShader: document.getElementById( &#x27;fragmentshader&#x27; ).textContent,
+		transparent: true
+	});
+
+	var particleCube = new THREE.ParticleSystem( this.particleGeometry, shaderMaterial );
+	//particleCube.position.set(config.coords.x,config.coords.y,config.coords.z);
+	particleCube.dynamic = true;
+	particleCube.sortParticles = true;
+	particleCube.userData.sourcePlanet = this.target;
+	particleCube.userData.targetPlanet = this.target;
+	gameEngine.scene.add( particleCube );
+
+	/**
+	 * Description
+	 * @method move
+	 * @param {} drawline
+	 * @return 
+	 */
+	this.move = function(drawline){
+		for( var v = 0; v &lt; this.particleGeometry.vertices.length; v++ ) {
+			var timeOffset = gameEngine.uniforms.time.value + gameEngine.attributes.customOffset.value[ v ];
+
+			var pos = this.flyerPosition(timeOffset, v, this.source, this.target, drawline);
+			if (pos.x){
+				this.particleGeometry.vertices[v] = pos;
+			} else {
+				if (v===this.particleGeometry.vertices.length-1){
+					var p = particleCube.userData.targetPlanet;
+
+					if (p.player.color.equal(this.source.player.color)){
+						p.units++;
+					} else {
+						p.units--;
+						if (p.units &lt;= 0){
+							gameEngine.sound.sample[&quot;smallexplosion1&quot;].play();
+							p.conquer(this.source.player);
+							gameEngine.alert({
+								type: &quot;success&quot;,
+								seconds: 3,
+								msg:&quot;A planet was conquered!&quot;,
+								color: this.source.player.color
+							});
+						}
+					}
+					p.setText();
+					gameEngine.scene.remove( particleCube );
+					gameEngine.scene.remove( line );
+					this.particleGeometry.vertices = [];
+					for (var i = 0; i &lt; gameEngine.swarms.length; i++) {
+						if (!p.defenseAlertDone){
+							p.defenseAlertDone = true;
+							//gameEngine.sound.samples(&quot;autodefense_ep&quot;).play(0.5);
+							gameEngine.sound.sample[&quot;autodefense_ep&quot;].play();
+						}
+						 
+						var s = gameEngine.swarms[i];
+						if (s.id === this.id) gameEngine.swarms.remove(i);
+						break;
+					};
+				}
+
+			}
+		}
+	}
+
+	gameEngine.swarms.push(this);
+	return this;
+};
+    </pre>
+</div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../assets/vendor/prettify/prettify-min.js"></script>
+<script>prettyPrint();</script>
+<script src="../assets/js/yui-prettify.js"></script>
+<script src="../assets/../api.js"></script>
+<script src="../assets/js/api-filter.js"></script>
+<script src="../assets/js/api-list.js"></script>
+<script src="../assets/js/api-search.js"></script>
+<script src="../assets/js/apidocs.js"></script>
+</body>
+</html>

@@ -1,4 +1,13 @@
 var FID=-1;
+/**
+ * Description
+ * @class FlyerSwarm
+ * @constructor
+ * @param {} gameEngine
+ * @param {} config
+ * @param {} callback
+ * @return ThisExpression
+ */
 var FlyerSwarm = function(gameEngine, config, callback){
 	 
 	var count = 1;
@@ -27,11 +36,26 @@ var FlyerSwarm = function(gameEngine, config, callback){
 	var attackTimer =  10;
 	var distance  ;
 
+	/**
+	 * Description
+	 * @method speed
+	 * @return 
+	 */
 	var speed = function() {
 		// body...
 	}
 	var distance;
 
+	/**
+	 * Description
+	 * @method flyerPosition
+	 * @param {} timeOffset
+	 * @param {} index
+	 * @param {} source
+	 * @param {} target
+	 * @param {} drawline
+	 * @return NewExpression
+	 */
 	this.flyerPosition = function(timeOffset, index, source, target, drawline){
 
 		//var t = target.position(gameEngine.timeMachine());
@@ -101,6 +125,12 @@ var FlyerSwarm = function(gameEngine, config, callback){
 	particleCube.userData.targetPlanet = this.target;
 	gameEngine.scene.add( particleCube );
 
+	/**
+	 * Description
+	 * @method move
+	 * @param {} drawline
+	 * @return 
+	 */
 	this.move = function(drawline){
 		for( var v = 0; v < this.particleGeometry.vertices.length; v++ ) {
 			var timeOffset = gameEngine.uniforms.time.value + gameEngine.attributes.customOffset.value[ v ];

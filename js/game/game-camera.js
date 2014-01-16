@@ -1,16 +1,43 @@
+/**
+ * Description
+ * @class GameEngineCamera
+ * @constructor
+ * @param {} argument
+ * @return ThisExpression
+ */
 var GameEngineCamera = function  (argument) {
 
 	this.route = [];
 
+	/**
+	 * Description
+	 * @method look
+	 * @return 
+	 */
 	this.look = function  () {
 		gameEngine.camera.lookAt(this.lookAt);
 	}
 
+	/**
+	 * Description
+	 * @method focus
+	 * @param {} pos
+	 * @return ThisExpression
+	 */
 	this.focus = function(pos){
 		this.lookAt = pos;
 		return this;
 	};
 
+	/**
+	 * Description
+	 * @method move
+	 * @param {} target
+	 * @param {} lookAt
+	 * @param {} lookAtNext
+	 * @param {} callback
+	 * @return ThisExpression
+	 */
 	this.move = function  (target, lookAt, lookAtNext, callback) {
 		this.callback = callback;
 		/*var newQuaternion = new THREE.Quaternion();

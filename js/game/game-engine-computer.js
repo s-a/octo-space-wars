@@ -1,7 +1,15 @@
+
 var PlanetaryEvent = function(){
 	return this;
 }
 
+/**
+ * Description
+ * @class Computer
+ * @constructor
+ * @param {} gameEngine
+ * @return ThisExpression
+ */
 var Computer = function(gameEngine){
 	var currentPlayerIndex = 1;
 	var currentPlayer = null;
@@ -10,15 +18,33 @@ var Computer = function(gameEngine){
 	this.events = [];
 
 
+	/**
+	 * Description
+	 * @method desaster
+	 * @return 
+	 */
 	this.desaster = function() {
 		this.events[0]();
 	}
 
+	/**
+	 * Description
+	 * @method isEnemy
+	 * @param {} player
+	 * @param {} planet
+	 * @return UnaryExpression
+	 */
 	this.isEnemy = function  (player, planet) {
 		if (!player) return true;
 		return !player.color.equal(planet.player.color);
 	}
 
+	/**
+	 * Description
+	 * @method weakestEnemy
+	 * @param {} currentPlanet
+	 * @return 
+	 */
 	this.weakestEnemy = function(currentPlanet) {
 		for (var i = 1; i < this.gameEngine.planets.length; i++) {
 			var planet = this.gameEngine.planet(i);
@@ -26,6 +52,11 @@ var Computer = function(gameEngine){
 		};
 	}
 
+	/**
+	 * Description
+	 * @method nextPlayerPlanet
+	 * @return 
+	 */
 	this.nextPlayerPlanet = function() {
 
 		if (currentPlayerIndex+1 === this.gameEngine.planets.length-1) currentPlayerIndex = 0;
@@ -42,6 +73,11 @@ var Computer = function(gameEngine){
 		currentPlayerIndex = 0;
 	}
 
+	/**
+	 * Description
+	 * @method play
+	 * @return 
+	 */
 	this.play = function  () {
  
 		var source = this.nextPlayerPlanet();

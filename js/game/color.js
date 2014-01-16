@@ -5,8 +5,20 @@
  * MIT / GPL licensed
  */
 ;(function(window, undefined) {
+	/**
+	 * Description
+	 * @class Color
+	 * @constructor
+	 * @param {} colorValue
+	 * @return ThisExpression
+	 */
 	var Color = function(colorValue) {
 
+		/**
+		 * Description
+		 * @method random
+		 * @return NewExpression
+		 */
 		this.random = function () {
 		    var letters = '0123456789ABCDEF'.split('');
 		    var color = '#';
@@ -16,10 +28,22 @@
 		    return new Color(color);
 		}
 
+		/**
+		 * Description
+		 * @method equal
+		 * @param {} color
+		 * @return LogicalExpression
+		 */
 		this.equal = function(color) {
 			return ( this.r === color.r && this.g === color.g && this.b === color.b );
 		};
 
+		/**
+		 * Description
+		 * @method assignColor
+		 * @param {} color
+		 * @return ThisExpression
+		 */
 		this.assignColor = function(color) {
 			this.r = color.r;
 			this.g = color.g;
@@ -29,6 +53,12 @@
 			return this;
 		};
 
+		/**
+		 * Description
+		 * @method parseRGB
+		 * @param {} colorString
+		 * @return result
+		 */
 		this.parseRGB = function(colorString) {
 
 			if (colorString === "transparent")   colorString = "rgb(255, 255, 255)";
@@ -49,6 +79,12 @@
 			return result;
 		};
 
+		/**
+		 * Description
+		 * @method getColorFromName
+		 * @param {} name
+		 * @return 
+		 */
 		this.getColorFromName = function(name) {
 			var rgb,
 			tmp = document.body.appendChild(document.createElement("div"));
@@ -65,6 +101,12 @@
 			}
 		};
 
+		/**
+		 * Description
+		 * @method normalizeHexValue
+		 * @param {} hex
+		 * @return result
+		 */
 		this.normalizeHexValue = function(hex) {
 			var res = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
 			var result = null;
@@ -77,6 +119,12 @@
 			return result;
 		};
 
+		/**
+		 * Description
+		 * @method hexToRgb
+		 * @param {} hex
+		 * @return ConditionalExpression
+		 */
 		this.hexToRgb = function (hex) {
 			// Expand shorthand form (e.g. "03F") to full form (e.g. "0033FF")
 			var shorthandRegex = /^#?([a-f\d])([a-f\d])([a-f\d])$/i;
@@ -97,16 +145,32 @@
 			return "rgb(" + result.r + "," + result.g + "," + result.b + ")";
 		};*/
 
+		/**
+		 * Description
+		 * @method componentToHex
+		 * @param {} c
+		 * @return ConditionalExpression
+		 */
 		this.componentToHex = function (c) {
 			var hex = c.toString(16);
 			return hex.length == 1 ? "0" + hex : hex;
 		};
 
+		/**
+		 * Description
+		 * @method hex
+		 * @return BinaryExpression
+		 */
 		this.hex = function() {
 			return "#" + this.componentToHex(this.r) + this.componentToHex(this.g) + this.componentToHex(this.b);
 		};
 
 
+		/**
+		 * Description
+		 * @method invertGoodReadable
+		 * @return result
+		 */
 		this.invertGoodReadable = function() {
 			var result = new Color("#ffffff");
 			if (((this.r + this.b + this.g) / 3) > 128) {
@@ -115,6 +179,12 @@
 			return result;
 		};
 
+		/**
+		 * Description
+		 * @method lum
+		 * @param {} lum
+		 * @return ThisExpression
+		 */
 		this.lum = function(lum) {
 			var hex = ColorLuminance(this.hex(), 0)
 			hex = ColorLuminance(hex, lum);
@@ -123,6 +193,13 @@
 			return this;
 		};
 
+		/**
+		 * Description
+		 * @method ColorLuminance
+		 * @param {} hex
+		 * @param {} lum
+		 * @return rgb
+		 */
 		var ColorLuminance= function(hex, lum) {
 
 			// validate hex string
@@ -143,6 +220,11 @@
 			return rgb;
 		}
 
+		/**
+		 * Description
+		 * @method toString
+		 * @return result
+		 */
 		this.toString = function() {
 			var rgbValueString = "" ;
 			if (this.colorString){
@@ -168,6 +250,12 @@
 			return result;
 		};
 
+		/**
+		 * Description
+		 * @method initializeByNativeColorType
+		 * @param {} c
+		 * @return 
+		 */
 		this.initializeByNativeColorType = function(c) {
 			this.r = c.r;
 			this.g = c.g;
@@ -176,6 +264,12 @@
 			this.err = false;
 		};
 
+		/**
+		 * Description
+		 * @method initializeBy
+		 * @param {} colorValue
+		 * @return 
+		 */
 		this.initializeBy = function(colorValue) {
 			var color = colorValue;
 			if (color.r === undefined){

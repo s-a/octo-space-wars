@@ -13,6 +13,11 @@ var GAMEDATA = [
  
 var ___id = 0;
 var ___distance = 20;
+/**
+ * Description
+ * @method randomPlanetMeta
+ * @return ObjectExpression
+ */
 var randomPlanetMeta = function  () {
 	var prevPlanet = GAMEDATA[0]
 	___id++;

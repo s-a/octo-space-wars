@@ -1,0 +1,1297 @@
+{
+    "project": {},
+    "files": {
+        "color.js": {
+            "name": "color.js",
+            "modules": {},
+            "classes": {
+                "Color": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "game-camera.js": {
+            "name": "game-camera.js",
+            "modules": {},
+            "classes": {
+                "GameEngineCamera": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "game-class-flyer-swarm.js": {
+            "name": "game-class-flyer-swarm.js",
+            "modules": {},
+            "classes": {
+                "FlyerSwarm": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "game-class-flyer.js": {
+            "name": "game-class-flyer.js",
+            "modules": {},
+            "classes": {
+                "Flyer": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "game-class-planet.js": {
+            "name": "game-class-planet.js",
+            "modules": {},
+            "classes": {
+                "Planet": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "game-class-solar-system.js": {
+            "name": "game-class-solar-system.js",
+            "modules": {},
+            "classes": {
+                "SolarSystem": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "game-data.js": {
+            "name": "game-data.js",
+            "modules": {},
+            "classes": {},
+            "fors": {},
+            "namespaces": {}
+        },
+        "game-engine-computer.js": {
+            "name": "game-engine-computer.js",
+            "modules": {},
+            "classes": {
+                "Computer": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        },
+        "game-engine.js": {
+            "name": "game-engine.js",
+            "modules": {},
+            "classes": {
+                "Player": 1,
+                "GameEngine": 1
+            },
+            "fors": {},
+            "namespaces": {}
+        }
+    },
+    "modules": {},
+    "classes": {
+        "Color": {
+            "name": "Color",
+            "shortname": "Color",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "color.js",
+            "line": 8,
+            "description": "Description",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "colorValue",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "ThisExpression"
+            }
+        },
+        "GameEngineCamera": {
+            "name": "GameEngineCamera",
+            "shortname": "GameEngineCamera",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "game-camera.js",
+            "line": 1,
+            "description": "Description",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "argument",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "ThisExpression"
+            }
+        },
+        "FlyerSwarm": {
+            "name": "FlyerSwarm",
+            "shortname": "FlyerSwarm",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "game-class-flyer-swarm.js",
+            "line": 2,
+            "description": "Description",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "gameEngine",
+                    "description": ""
+                },
+                {
+                    "name": "config",
+                    "description": ""
+                },
+                {
+                    "name": "callback",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "ThisExpression"
+            }
+        },
+        "Flyer": {
+            "name": "Flyer",
+            "shortname": "Flyer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "game-class-flyer.js",
+            "line": 1,
+            "description": "Description",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "gameEngine",
+                    "description": ""
+                },
+                {
+                    "name": "swarm",
+                    "description": ""
+                },
+                {
+                    "name": "config",
+                    "description": ""
+                },
+                {
+                    "name": "target",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "ThisExpression"
+            }
+        },
+        "Planet": {
+            "name": "Planet",
+            "shortname": "Planet",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "game-class-planet.js",
+            "line": 1,
+            "description": "Description",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "config",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "ThisExpression"
+            }
+        },
+        "SolarSystem": {
+            "name": "SolarSystem",
+            "shortname": "SolarSystem",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "game-class-solar-system.js",
+            "line": 1,
+            "description": "Description",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "config",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "ThisExpression"
+            }
+        },
+        "Computer": {
+            "name": "Computer",
+            "shortname": "Computer",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "game-engine-computer.js",
+            "line": 6,
+            "description": "Description",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "gameEngine",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "ThisExpression"
+            }
+        },
+        "Player": {
+            "name": "Player",
+            "shortname": "Player",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "game-engine.js",
+            "line": 9,
+            "description": "Description",
+            "is_constructor": 1,
+            "params": [
+                {
+                    "name": "color",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "ThisExpression"
+            }
+        },
+        "GameEngine": {
+            "name": "GameEngine",
+            "shortname": "GameEngine",
+            "classitems": [],
+            "plugins": [],
+            "extensions": [],
+            "plugin_for": [],
+            "extension_for": [],
+            "file": "game-engine.js",
+            "line": 32,
+            "description": "Description",
+            "is_constructor": 1,
+            "return": {
+                "description": "ThisExpression"
+            }
+        }
+    },
+    "classitems": [
+        {
+            "file": "color.js",
+            "line": 17,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "random",
+            "return": {
+                "description": "NewExpression"
+            },
+            "class": "Color"
+        },
+        {
+            "file": "color.js",
+            "line": 31,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "equal",
+            "params": [
+                {
+                    "name": "color",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "LogicalExpression"
+            },
+            "class": "Color"
+        },
+        {
+            "file": "color.js",
+            "line": 41,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "assignColor",
+            "params": [
+                {
+                    "name": "color",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "ThisExpression"
+            },
+            "class": "Color"
+        },
+        {
+            "file": "color.js",
+            "line": 56,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "parseRGB",
+            "params": [
+                {
+                    "name": "colorString",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "result"
+            },
+            "class": "Color"
+        },
+        {
+            "file": "color.js",
+            "line": 82,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "getColorFromName",
+            "params": [
+                {
+                    "name": "name",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": ""
+            },
+            "class": "Color"
+        },
+        {
+            "file": "color.js",
+            "line": 104,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "normalizeHexValue",
+            "params": [
+                {
+                    "name": "hex",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "result"
+            },
+            "class": "Color"
+        },
+        {
+            "file": "color.js",
+            "line": 122,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "hexToRgb",
+            "params": [
+                {
+                    "name": "hex",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "ConditionalExpression"
+            },
+            "class": "Color"
+        },
+        {
+            "file": "color.js",
+            "line": 148,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "componentToHex",
+            "params": [
+                {
+                    "name": "c",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "ConditionalExpression"
+            },
+            "class": "Color"
+        },
+        {
+            "file": "color.js",
+            "line": 159,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "hex",
+            "return": {
+                "description": "BinaryExpression"
+            },
+            "class": "Color"
+        },
+        {
+            "file": "color.js",
+            "line": 169,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "invertGoodReadable",
+            "return": {
+                "description": "result"
+            },
+            "class": "Color"
+        },
+        {
+            "file": "color.js",
+            "line": 182,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "lum",
+            "params": [
+                {
+                    "name": "lum",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "ThisExpression"
+            },
+            "class": "Color"
+        },
+        {
+            "file": "color.js",
+            "line": 196,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "ColorLuminance",
+            "params": [
+                {
+                    "name": "hex",
+                    "description": ""
+                },
+                {
+                    "name": "lum",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "rgb"
+            },
+            "class": "Color"
+        },
+        {
+            "file": "color.js",
+            "line": 223,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "toString",
+            "return": {
+                "description": "result"
+            },
+            "class": "Color"
+        },
+        {
+            "file": "color.js",
+            "line": 253,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "initializeByNativeColorType",
+            "params": [
+                {
+                    "name": "c",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": ""
+            },
+            "class": "Color"
+        },
+        {
+            "file": "color.js",
+            "line": 267,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "initializeBy",
+            "params": [
+                {
+                    "name": "colorValue",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": ""
+            },
+            "class": "Color"
+        },
+        {
+            "file": "game-camera.js",
+            "line": 12,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "look",
+            "return": {
+                "description": ""
+            },
+            "class": "GameEngineCamera"
+        },
+        {
+            "file": "game-camera.js",
+            "line": 21,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "focus",
+            "params": [
+                {
+                    "name": "pos",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "ThisExpression"
+            },
+            "class": "GameEngineCamera"
+        },
+        {
+            "file": "game-camera.js",
+            "line": 32,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "move",
+            "params": [
+                {
+                    "name": "target",
+                    "description": ""
+                },
+                {
+                    "name": "lookAt",
+                    "description": ""
+                },
+                {
+                    "name": "lookAtNext",
+                    "description": ""
+                },
+                {
+                    "name": "callback",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "ThisExpression"
+            },
+            "class": "GameEngineCamera"
+        },
+        {
+            "file": "game-class-flyer-swarm.js",
+            "line": 39,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "speed",
+            "return": {
+                "description": ""
+            },
+            "class": "FlyerSwarm"
+        },
+        {
+            "file": "game-class-flyer-swarm.js",
+            "line": 49,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "flyerPosition",
+            "params": [
+                {
+                    "name": "timeOffset",
+                    "description": ""
+                },
+                {
+                    "name": "index",
+                    "description": ""
+                },
+                {
+                    "name": "source",
+                    "description": ""
+                },
+                {
+                    "name": "target",
+                    "description": ""
+                },
+                {
+                    "name": "drawline",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "NewExpression"
+            },
+            "class": "FlyerSwarm"
+        },
+        {
+            "file": "game-class-flyer-swarm.js",
+            "line": 128,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "move",
+            "params": [
+                {
+                    "name": "drawline",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": ""
+            },
+            "class": "FlyerSwarm"
+        },
+        {
+            "file": "game-class-flyer.js",
+            "line": 15,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "detectCollision",
+            "return": {
+                "description": ""
+            },
+            "class": "Flyer"
+        },
+        {
+            "file": "game-class-flyer.js",
+            "line": 32,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "computeSecureTrack",
+            "return": {
+                "description": ""
+            },
+            "class": "Flyer"
+        },
+        {
+            "file": "game-class-flyer.js",
+            "line": 48,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "position",
+            "return": {
+                "description": ""
+            },
+            "class": "Flyer"
+        },
+        {
+            "file": "game-class-planet.js",
+            "line": 15,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "formatPlanetName",
+            "params": [
+                {
+                    "name": "timestamp",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "CallExpression"
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "game-class-planet.js",
+            "line": 27,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "flyto",
+            "params": [
+                {
+                    "name": "target",
+                    "description": ""
+                },
+                {
+                    "name": "count",
+                    "description": ""
+                },
+                {
+                    "name": "launchSpeedInMilliseconds",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "result"
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "game-class-planet.js",
+            "line": 66,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "getName",
+            "return": {
+                "description": "LogicalExpression"
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "game-class-planet.js",
+            "line": 78,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "setText",
+            "return": {
+                "description": ""
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "game-class-planet.js",
+            "line": 108,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "conquer",
+            "params": [
+                {
+                    "name": "player",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": ""
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "game-class-planet.js",
+            "line": 168,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "getSize",
+            "params": [
+                {
+                    "name": "size",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "s"
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "game-class-planet.js",
+            "line": 187,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "distance",
+            "params": [
+                {
+                    "name": "target",
+                    "description": ""
+                },
+                {
+                    "name": "time",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "CallExpression"
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "game-class-planet.js",
+            "line": 204,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "position",
+            "params": [
+                {
+                    "name": "t",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "pos"
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "game-class-planet.js",
+            "line": 222,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "move",
+            "params": [
+                {
+                    "name": "x",
+                    "description": ""
+                },
+                {
+                    "name": "y",
+                    "description": ""
+                },
+                {
+                    "name": "z",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": ""
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "game-class-planet.js",
+            "line": 241,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "render",
+            "params": [
+                {
+                    "name": "scene",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": ""
+            },
+            "class": "Planet"
+        },
+        {
+            "file": "game-class-solar-system.js",
+            "line": 12,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "load",
+            "params": [
+                {
+                    "name": "planets",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "ThisExpression"
+            },
+            "class": "SolarSystem"
+        },
+        {
+            "file": "game-data.js",
+            "line": 16,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "randomPlanetMeta",
+            "return": {
+                "description": "ObjectExpression"
+            },
+            "class": "Computer"
+        },
+        {
+            "file": "game-engine-computer.js",
+            "line": 21,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "desaster",
+            "return": {
+                "description": ""
+            },
+            "class": "Computer"
+        },
+        {
+            "file": "game-engine-computer.js",
+            "line": 30,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "isEnemy",
+            "params": [
+                {
+                    "name": "player",
+                    "description": ""
+                },
+                {
+                    "name": "planet",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "UnaryExpression"
+            },
+            "class": "Computer"
+        },
+        {
+            "file": "game-engine-computer.js",
+            "line": 42,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "weakestEnemy",
+            "params": [
+                {
+                    "name": "currentPlanet",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": ""
+            },
+            "class": "Computer"
+        },
+        {
+            "file": "game-engine-computer.js",
+            "line": 55,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "nextPlayerPlanet",
+            "return": {
+                "description": ""
+            },
+            "class": "Computer"
+        },
+        {
+            "file": "game-engine-computer.js",
+            "line": 76,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "play",
+            "return": {
+                "description": ""
+            },
+            "class": "Computer"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 54,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "Music",
+            "return": {
+                "description": "audio"
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 68,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "Sample",
+            "params": [
+                {
+                    "name": "sample",
+                    "description": ""
+                },
+                {
+                    "name": "volume",
+                    "description": ""
+                },
+                {
+                    "name": "onLoad",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "audio"
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 91,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "Navigation",
+            "return": {
+                "description": "ThisExpression"
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 97,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "computeSecurePath",
+            "params": [
+                {
+                    "name": "setup",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "CallExpression"
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 116,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "render",
+            "return": {
+                "description": ""
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 160,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "onDocumentMouseMove",
+            "params": [
+                {
+                    "name": "event",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": ""
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 174,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "onDocumentMouseDown",
+            "params": [
+                {
+                    "name": "event",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": ""
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 201,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "preload",
+            "params": [
+                {
+                    "name": "done",
+                    "description": ""
+                },
+                {
+                    "name": "update",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": ""
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 247,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "loadSounds",
+            "return": {
+                "description": ""
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 270,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "init",
+            "return": {
+                "description": ""
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 347,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "callbackProgress",
+            "params": [
+                {
+                    "name": "progress",
+                    "description": ""
+                },
+                {
+                    "name": "result",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": ""
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 374,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "start",
+            "return": {
+                "description": ""
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 385,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "randomPlanet",
+            "params": [
+                {
+                    "name": "ignore",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "MemberExpression"
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 401,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "detectCollision",
+            "params": [
+                {
+                    "name": "oldPostion",
+                    "description": ""
+                },
+                {
+                    "name": "newPosition",
+                    "description": ""
+                },
+                {
+                    "name": "distance",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "LogicalExpression"
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 424,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "degInRad",
+            "params": [
+                {
+                    "name": "deg",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "BinaryExpression"
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 434,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "updateCamera",
+            "return": {
+                "description": ""
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 462,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "update",
+            "return": {
+                "description": ""
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 519,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "timeMachine",
+            "params": [
+                {
+                    "name": "elapsedTime",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "LogicalExpression"
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 529,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "planet",
+            "params": [
+                {
+                    "name": "i",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": "MemberExpression"
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 540,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "alert",
+            "params": [
+                {
+                    "name": "a",
+                    "description": ""
+                },
+                {
+                    "name": "callback",
+                    "description": ""
+                }
+            ],
+            "return": {
+                "description": ""
+            },
+            "class": "GameEngine"
+        },
+        {
+            "file": "game-engine.js",
+            "line": 576,
+            "description": "Description",
+            "itemtype": "method",
+            "name": "animate",
+            "return": {
+                "description": ""
+            },
+            "class": "GameEngine"
+        }
+    ],
+    "warnings": []
+}
