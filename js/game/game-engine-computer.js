@@ -1,7 +1,7 @@
 var Computer = function(gameEngine){
 	var currentPlayerIndex = 1;
 	var currentPlayer = null;
-	var ii = 0;
+
 	this.gameEngine = gameEngine;
  
 
@@ -38,32 +38,9 @@ var Computer = function(gameEngine){
  
 		var source = this.nextPlayerPlanet();
 		var target = this.weakestEnemy(source);
-		console.log(source, source.id);
-		if (target){
-			
-			var i = window.setInterval(function() {
-				if (source.units > 1){
-					new FlyerSwarm(gameEngine, {
-						target : target,
-						source : source
-					}, 1, function(){
-
-					});
-					source.units--;
-					source.setText(); 
-				} else {
-					gameEngine.sound.sample["computer_error"].play();
-				}
-				ii++;
-
-				if (ii===10 || source.units < 2){
-					window.clearInterval(i);
-				}
-			},500);
-
-		} else {
-			alert("donw");
-		}
+		if (!source.flyto(target, 10)) {
+			alert("done!");
+		} 
 	}
 
 	return this;

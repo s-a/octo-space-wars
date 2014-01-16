@@ -10,6 +10,35 @@ var Planet = function  (config) {
 		    return i && c !== "-" && !((a.length - i) % 6) ? '/' + c : c;
 		}).replace(".00","");
  	}
+
+ 	this.flyto = function(target, count, launchSpeedInMilliseconds) {
+		var source = this;
+		var ii = 0;
+		var result = false;
+ 		launchSpeedInMilliseconds = launchSpeedInMilliseconds || 500;
+		if (target & source.units > 1){
+			var i = window.setInterval(function() {
+					new FlyerSwarm(gameEngine, {
+						target : target,
+						source : source
+					}, 1, function(){
+
+					});
+					source.units--;
+					source.setText(); 
+				ii++;
+
+				if (ii===count || source.units < 2){
+					window.clearInterval(i);
+				}
+			}, launchSpeedInMilliseconds);
+			result = true;
+		} else {
+			gameEngine.sound.sample["computer_error"].play();
+		}
+
+		return result;
+ 	}
  	
 	this.getName = function(){ 
 		return config.name || "P-" + this.config.parent + "/" + this.id;

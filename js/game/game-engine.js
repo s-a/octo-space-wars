@@ -138,29 +138,7 @@ var GameEngine = function() {
 				return;
 			}
 			var target = gameEngine.randomPlanet(exclude);
-			var ii=0;
-			gameEngine.sound.sample["computer_work_beep"].play();
-			var i = window.setInterval(function() {
-				if (source.units > 1){
-					new FlyerSwarm(gameEngine, {
-						target : target,
-						source : source
-					}, 1, function(){
-
-					});
-					source.units--;
-					source.setText();
-
-				} else {
-					gameEngine.sound.sample["computer_error"].play();
-				}
-				ii++;
-
-				if (ii===10 || source.units < 2){
-					window.clearInterval(i);
-				}
-			},500);
-
+			source.flyto(target, 10);
 		}
 	}
 

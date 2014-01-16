@@ -75,25 +75,8 @@ $(function() {
 										msg:"Machines invading our solar system!"
 									});
 								 	gameEngine.sound.sample["system_alarm"].play();
-								 	var aa=0;
 								 	var source = new Planet(randomPlanetMeta());
-									source.player = new Player("#FF0000");
-									source.units = 1000;
-								 	var target = gameEngine.randomPlanet([0]);
-									var i = window.setInterval(function() {
-										new FlyerSwarm(gameEngine, {
-											target : target,
-											source : source
-										}, 1, function(){
-
-										});
-						  
-										aa++;
-
-										if (aa>=gameEngine.config.alienStrenth){
-											window.clearInterval(i);
-										}
-									}, 600);
+									source.flyto(target, gameEngine.config.alienStrenth);
 								}, 1000*20);
 							});
 						});
