@@ -122,7 +122,8 @@ var FlyerSwarm = function(gameEngine, config, callback){
 							gameEngine.alert({
 								type: "success",
 								seconds: 3,
-								msg:"A planet was conquered!"
+								msg:"A planet was conquered!",
+								color: this.source.player.color
 							});
 						}
 					}

@@ -30,42 +30,7 @@ body
 				font-size: 30px;
 				display: none;
 			}
-
-			.alert-fatal{
-				color: #B31800;
-				text-shadow: 	0 0 10px #fff,
-				0 0 20px #fff,
-				0 0 30px #fff,
-				0 0 40px #FF0000,
-				0 0 70px #FF0000,
-				0 0 80px #FF0000,
-				0 0 100px #FF0000,
-				0 0 150px #FF0000;
-			}
-
-			.alert-info{
-				color: #000080;
-				text-shadow: 	0 0 10px #fff,
-				0 0 20px #fff,
-				0 0 30px #fff,
-				0 0 40px #4D4DFF,
-				0 0 70px #4D4DFF,
-				0 0 80px #4D4DFF,
-				0 0 100px #4D4DFF,
-				0 0 150px #4D4DFF;
-			}
-
-			.alert-success{
-				color: #009900;
-				text-shadow: 	0 0 10px #fff,
-				0 0 20px #fff,
-				0 0 30px #fff,
-				0 0 40px #00FF00,
-				0 0 70px #00FF00,
-				0 0 80px #00FF00,
-				0 0 100px #00FF00,
-				0 0 150px #00FF00;
-			}
+ 
 			body, html{
 				background-color: #000;
 				color:#fff;

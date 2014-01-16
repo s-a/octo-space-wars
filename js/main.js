@@ -75,7 +75,8 @@ $(function() {
 										msg:"Machines invading our solar system!"
 									});
 								 	gameEngine.sound.sample["system_alarm"].play();
-								 	var source = new Planet(randomPlanetMeta());
+								 	var source = new Planet(randomPlanetMeta()); 
+								 	var target = gameEngine.randomPlanet([source.id]);
 									source.flyto(target, gameEngine.config.alienStrenth);
 								}, 1000*20);
 							});

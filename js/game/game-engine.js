@@ -20,6 +20,8 @@ Array.prototype.remove = function(from, to) {
   this.length = from < 0 ? this.length + from : from;
   return this.push.apply(this, rest);
 };
+
+
 var GameEngine = function() {
 
 	var self = this;
@@ -413,7 +415,19 @@ var GameEngine = function() {
 	this.alert = function(a, callback) {
 		$("#alert").attr("class", "").addClass("alert-" + (a.type || "fatal")).html(a.msg);
 
-	 	$("#alert").fadeIn("slow", function() {
+		var c1 = "#B31800";
+		var c2 = "#fff";
+		debugger;
+		if (a.color) {
+			c1 = a.color.hex();
+			c2 = a.color.lum(0.5).hex();
+		} else {
+			c2 = new Color(c1).lum(0.5).hex();
+		}
+	 	$("#alert").css({
+	 		"color": c1,
+	 		"text-shadow": "0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px " + c2 + ", 0 0 70px " + c2 + ", 0 0 80px " + c2 + ", 0 0 100px " + c2 + ", 0 0 150px " + c2
+	 	}).fadeIn("slow", function() {
 		 	window.clearTimeout(msgTimer);
 		 	msgTimer = window.setTimeout(function() {
 		 		$("#alert").fadeOut("slow", function() {

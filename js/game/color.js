@@ -120,6 +120,7 @@
 			hex = ColorLuminance(hex, lum);
 			var newColor = new Color(hex);
 			this.assignColor(newColor);
+			return this;
 		};
 
 		var ColorLuminance= function(hex, lum) {
