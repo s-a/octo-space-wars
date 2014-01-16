@@ -18,6 +18,7 @@ var Planet = function  (config) {
  		launchSpeedInMilliseconds = launchSpeedInMilliseconds || 500;
 		if (target && source.units > 1){
 			var i = window.setInterval(function() {
+				if (ii===count || source.units > 1){
 					new FlyerSwarm(gameEngine, {
 						target : target,
 						source : source
@@ -26,10 +27,11 @@ var Planet = function  (config) {
 					});
 					source.units--;
 					source.setText(); 
-				ii++;
+					ii++;
 
-				if (ii===count || source.units < 2){
-					window.clearInterval(i);
+					if (ii===count || source.units < 2){
+						window.clearInterval(i);
+					}
 				}
 			}, launchSpeedInMilliseconds);
 			result = true;

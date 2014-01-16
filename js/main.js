@@ -33,9 +33,9 @@ new SpeechRouter({
 
 */
 
+window.gameEngine = new GameEngine(window);
 $(function() {
 	$topLoader = $("#topLoader");
-	window.gameEngine = new GameEngine(window);
 	gameEngine.preload(function() {
 		gameEngine.start();
 		$("#ThreeJS").fadeIn("fast", function() {
@@ -69,15 +69,7 @@ $(function() {
 									msg:"Foreign powers fall into our system ...<br>Show no mercy!<br>Defend the habitat of our civilization and destroy them!<br><br>Good luck... (press 'h' for help)"
 								});
 								window.setTimeout(function(){
-								 	gameEngine.alert({
-										type: "fatal",
-										seconds: 4,
-										msg:"Machines invading our solar system!"
-									});
-								 	gameEngine.sound.sample["system_alarm"].play();
-								 	var source = new Planet(randomPlanetMeta()); 
-								 	var target = gameEngine.randomPlanet([source.id]);
-									source.flyto(target, gameEngine.config.alienStrenth);
+								 	gameEngine.computer.desaster();
 								}, 1000*20);
 							});
 						});

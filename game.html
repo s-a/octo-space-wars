@@ -51,6 +51,8 @@
 		}
 	</script>
 	<script src="js/jquery-1.9.1.js"></script>
+    <script src="js/speech-router.js"></script>
+    <script src="js/annyang.min.js"></script>
 	<script src="js/game/color.js"></script>
 	<script src="js/game/game-class-planet.js"></script>
 	<script src="js/game/game-class-solar-system.js"></script>
@@ -60,8 +62,23 @@
 	<script src="js/game/game-engine-computer.js"></script>
 	<script src="js/game/game-engine.js"></script>
 	<script src="js/game/game-data.js"></script>
-    <script src="js/speech-router.js"></script>
-    <script src="js/annyang.min.js"></script>
 	<script src="js/main.js"></script>
+	<script type="text/javascript">
+		var alienMachineInvasion = function() {
+			var neonRed = new Color("#FF0000");
+			gameEngine.alert({
+				seconds: 6,
+				msg:"Machines invading our solar system!",
+				color: neonRed
+			});
+		 	gameEngine.sound.sample["system_alarm"].play();
+		 	var source = new Planet(randomPlanetMeta()); 
+		 	var target = gameEngine.randomPlanet([0]);
+		 	source.player = new Player("#FF0000");
+			source.flyto(target, gameEngine.config.alienStrenth);
+		}
+
+		gameEngine.computer.events.push(alienMachineInvasion);
+	</script>
 </body>
 </html>

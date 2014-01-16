@@ -417,7 +417,7 @@ var GameEngine = function() {
 
 		var c1 = "#B31800";
 		var c2 = "#fff";
-		debugger;
+		
 		if (a.color) {
 			c1 = a.color.hex();
 			c2 = a.color.lum(0.5).hex();

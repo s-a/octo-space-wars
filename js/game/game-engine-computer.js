@@ -1,16 +1,24 @@
+var PlanetaryEvent = function(){
+	return this;
+}
+
 var Computer = function(gameEngine){
 	var currentPlayerIndex = 1;
 	var currentPlayer = null;
 
 	this.gameEngine = gameEngine;
- 
+	this.events = [];
+
+
+	this.desaster = function() {
+		this.events[0]();
+	}
 
 	this.isEnemy = function  (player, planet) {
 		if (!player) return true;
 		return !player.color.equal(planet.player.color);
 	}
 
- 
 	this.weakestEnemy = function(currentPlanet) {
 		for (var i = 1; i < this.gameEngine.planets.length; i++) {
 			var planet = this.gameEngine.planet(i);
