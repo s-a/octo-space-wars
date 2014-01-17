@@ -170,6 +170,7 @@ var FlyerSwarm = function(gameEngine, config, callback){
 						 
 						var s = gameEngine.swarms[i];
 						if (s.id === this.id) gameEngine.swarms.remove(i);
+						// gameEngine.refreshGameStatistics(); performance :( 
 						break;
 					};
 				}

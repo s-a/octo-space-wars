@@ -25,6 +25,7 @@ var PlayerSummary = function  () {
 		for (var i = 0; i < this.players.length; i++) {
 			var p = this.players[i];
 			if (p.color.equal(player.color)){
+ 
 				result = p;
 				break;
 			}
@@ -32,13 +33,14 @@ var PlayerSummary = function  () {
 		return result;
 	}
 
-	this.add = function(fromPlanet) {
+	this.addFromPlanet = function(fromPlanet) {
 		var player = this.get(fromPlanet.player);
 		if (player){
 			player.planets++;
 			player.units += fromPlanet.units;
 		} else {
-			var p = jQuery.extend(true, {}, fromPlanet.player);
+			var p = new Player(fromPlanet.player.color);
+			p.name = fromPlanet.player.name;
 			p.planets = 1;
 			p.units = fromPlanet.units;
 			this.players.push(p);
@@ -46,11 +48,7 @@ var PlayerSummary = function  () {
 	}
 
 	this.init = function() {
-		for (var i = 0; i < gameEngine.planets.length; i++) {
-			var planet = gameEngine.planets[i];
-			this.add(planet);
-		};
-
+		for (var i = 0; i < gameEngine.planets.length; i++) this.addFromPlanet(gameEngine.planets[i]);
 		this.players = this.players.sort(function(a,b) {
 			return (a.units * a.planets) - (b.units * b.planets);
 		});

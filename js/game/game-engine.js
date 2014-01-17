@@ -4,7 +4,7 @@ var gameConfig =  {
 		opacity :  0.07 ,
 		color   : 0x66FF33
 	},
-	alienStrenth : 200
+	alienStrenth : 500
 }
 /**
  * Description
@@ -20,7 +20,8 @@ var Player = function  (color) {
 		this.color = new Color("#000000").random();
 	}
 
-	this.name = Faker.Name.findName();
+	var ext = ["ons", "ans", "ians"];
+	this.name = Faker.Name.lastName() + ext.randomItem();
 	return this;
 }
 // Array Remove - By John Resig (MIT Licensed) 
@@ -30,6 +31,11 @@ Array.prototype.remove = function(from, to) {
   return this.push.apply(this, rest);
 };
 
+
+Array.prototype.randomItem = function() {
+	var id = Math.floor(Math.random()*this.length);
+	return this[id];
+}
 
 /**
  * Description
@@ -207,6 +213,9 @@ var GameEngine = function() {
 	 * @return 
 	 */
 	this.preload = function  (done, update) {
+		this.dom = {};
+		this.dom.$stats = jQuery("#stats");
+
 		var materials = [
 			"nebula-zpos.png",
 			"nebula-zneg.png",
@@ -270,7 +279,7 @@ var GameEngine = function() {
 
 	this.refreshGameStatistics = function  () {
 		var stats = this.computer.refreshGameStatistics();
-		var $stats = jQuery("#stats");
+		var $stats = this.dom.$stats;
 		stats.bind($stats);
 	}
 
@@ -377,6 +386,7 @@ var GameEngine = function() {
 				}
 
 		this.refreshGameStatistics();
+
 	}
 
 	/**

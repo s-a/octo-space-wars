@@ -76,10 +76,12 @@
 				color: neonRed
 			});
 		 	gameEngine.sound.sample["system_alarm"].play();
+ 
 		 	var source = new Planet(randomPlanetMeta()); 
 		 	var target = gameEngine.randomPlanet([0]);
 		 	source.player = new Player("#FF0000");
-			source.flyto(target, gameEngine.config.alienStrenth);
+		 	source.player.name = "Machines from outer space";
+			source.flyto(target, gameEngine.config.alienStrenth, 200);
 		}
 
 		gameEngine.computer.events.push(alienMachineInvasion);
