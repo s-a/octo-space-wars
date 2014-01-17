@@ -24,7 +24,7 @@ var Flyer = function(gameEngine, swarm, config, target) {
 
 	  if (intersects.length > 0) {
 	    if (intersects[0].distance < 5) {
-	      console.log(intersects);
+	       
 	    }
 	  }
 	}

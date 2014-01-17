@@ -79,7 +79,7 @@ $(function() {
 		});
 	}, function  (percentDone) {
 		//document.title = percentDone + "%";
-		console.log(percentDone);
+		 
 		$topLoader.text("loading space... " + Math.round(percentDone,4) + "%"); 
 	});
 });

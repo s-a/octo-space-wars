@@ -59,12 +59,12 @@ var FlyerSwarm = function(gameEngine, config, callback){
 	this.flyerPosition = function(timeOffset, index, source, target, drawline){
 
 		//var t = target.position(gameEngine.timeMachine());
-		//console.log(this.targetPosition);
+	 
 		if (!this.targetPosition) {
 			distance = source.distance(target, timeOffset);//point;
 		 	targetHitTime = (timeOffset)+ (distance / attackTimer);
 			var s = source.position(gameEngine.timeMachine()*0.025);
-			//console.log(targetHitTime);
+	 
 			this.targetPosition = target.position((gameEngine.timeMachine() + attackTimer) * 0.025);
 
  
@@ -88,7 +88,7 @@ var FlyerSwarm = function(gameEngine, config, callback){
 			}
 
 
-			//console.log(line)
+		 
 		}
 	 //document.title = xx;
 
