@@ -69,7 +69,7 @@ var Planet = function  (config) {
 	 * @return LogicalExpression
 	 */
 	this.getName = function(){ 
-		return config.name || "P-" + this.config.parent + "/" + this.id;
+		return config.name || this.player.name;
 	}
 
 	var shape;
@@ -81,7 +81,7 @@ var Planet = function  (config) {
 	 * @return 
 	 */
 	this.setText = function  (){
-		shape = new THREE.TextGeometry(this.getName() + " * " + this.units, {
+		shape = new THREE.TextGeometry(this.getName() + " " + this.units, {
 			font: 'helvetiker', 
 			size: 6,  
 			bevelEnabled : false,

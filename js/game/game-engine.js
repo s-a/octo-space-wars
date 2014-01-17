@@ -20,7 +20,7 @@ var Player = function  (color) {
 		this.color = new Color("#000000").random();
 	}
 
-	var ext = ["ons", "ans", "ians"];
+	var ext = ["ions", "ons", "ans", "ians"];
 	this.name = Faker.Name.lastName() + ext.randomItem();
 	return this;
 }
@@ -398,6 +398,10 @@ var GameEngine = function() {
 		this.planets = new SolarSystem().load(GAMEDATA).planets;
 		this.init();
 		animate(this.planets);
+
+		window.setInterval(function() {
+			gameEngine.refreshGameStatistics();
+		}, 1000 * 20)
 	};
 
 	/**
