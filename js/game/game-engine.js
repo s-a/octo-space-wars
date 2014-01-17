@@ -19,6 +19,8 @@ var Player = function  (color) {
 	} else {
 		this.color = new Color("#000000").random();
 	}
+
+	this.name = Faker.Name.findName();
 	return this;
 }
 // Array Remove - By John Resig (MIT Licensed) 
@@ -186,7 +188,6 @@ var GameEngine = function() {
 				var p = gameEngine.planets[i]
 				if (p.player.color.equal(source.player.color)){
 					exclude.push(p.id);
-					console.log(exclude);
 				}
 			};
 			if (gameEngine.planets.length === exclude.length) {
@@ -265,6 +266,12 @@ var GameEngine = function() {
 
 
 		//
+	}
+
+	this.refreshGameStatistics = function  () {
+		var stats = this.computer.refreshGameStatistics();
+		var $stats = jQuery("#stats");
+		stats.bind($stats);
 	}
 
 	/**
@@ -369,6 +376,7 @@ var GameEngine = function() {
 
 				}
 
+		this.refreshGameStatistics();
 	}
 
 	/**
@@ -536,6 +544,12 @@ var GameEngine = function() {
 		return this.planets[i];
 	};
 
+
+	this.css = {};
+	this.css.glow = function(color){
+		return "0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px " + color.hex() + ", 0 0 70px " + color.hex() + ", 0 0 80px " + color.hex() + ", 0 0 100px " + color.hex() + ", 0 0 150px " + color.hex()
+	}
+
 	var msgTimer = null;
 	/**
 	 * Description
@@ -552,13 +566,13 @@ var GameEngine = function() {
 		
 		if (a.color) {
 			c1 = a.color.hex();
-			c2 = a.color.lum(0.5).hex();
+			c2 = a.color;
 		} else {
-			c2 = new Color(c1).lum(0.5).hex();
+			c2 = new Color(c1);
 		}
 	 	$("#alert").css({
 	 		"color": c1,
-	 		"text-shadow": "0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px " + c2 + ", 0 0 70px " + c2 + ", 0 0 80px " + c2 + ", 0 0 100px " + c2 + ", 0 0 150px " + c2
+	 		"text-shadow": this.css.glow(c2.lum(0.5))
 	 	}).fadeIn("slow", function() {
 		 	window.clearTimeout(msgTimer);
 		 	msgTimer = window.setTimeout(function() {

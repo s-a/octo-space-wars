@@ -7,31 +7,38 @@ body
 	overflow: hidden;
 }
 
-      #topLoader {
-        width: 256px;
-        height: 256px;
-        position: absolute;
-        left: 50%;
-        margin-left: 128;
-        right: 50%;
-        margin-right: 128;
-      }
+#topLoader {
+	width: 256px;
+	height: 256px;
+	position: absolute;
+	left: 50%;
+	margin-left: 128;
+	right: 50%;
+	margin-right: 128;
+}
 
- 
-      #animateButton {
-        width: 256px;
-      }
 
-			#alert{
-				position: absolute;
-				left:40px;
-				top:40px;
+#animateButton {
+	width: 256px;
+}
 
-				font-size: 30px;
-				display: none;
-			}
- 
-			body, html{
-				background-color: #000;
-				color:#fff;
-			}
+#alert{
+	position: absolute;
+	left:40px;
+	top:40px;
+
+	font-size: 30px;
+	display: none;
+}
+
+body, html{
+	background-color: #000;
+	color:#fff;
+}
+
+#stats{
+	position: absolute;
+	top: 40px;
+	right: 40px;
+	color: white;
+}

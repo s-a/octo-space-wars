@@ -162,7 +162,7 @@ var Planet = function  (config) {
 		this.planet = planet;
 		this.atmosphere = atmosphere;
 
-
+		gameEngine.refreshGameStatistics();
 	}
 
 	/**

@@ -3,6 +3,66 @@ var PlanetaryEvent = function(){
 	return this;
 }
 
+
+var PlayerSummary = function  () {
+	this.players = [];
+
+
+	this.bind = function(select){
+		select.html("");
+	    $.each(this.players, function (id, player) {
+	    	var element = $('<div><sup>' + (player.units * player.planets) + "</sup> " + player.name + '</div>');
+	    	element.css({
+	    		color: player.color.lum(0.5).hex(),
+	    		"text-shadow": gameEngine.css.glow(player.color.lum())
+	    	});	
+	    	select.prepend(element);
+	    });  
+	}
+
+	this.get = function(player) {
+		var result = null;
+		for (var i = 0; i < this.players.length; i++) {
+			var p = this.players[i];
+			if (p.color.equal(player.color)){
+				result = p;
+				break;
+			}
+		};
+		return result;
+	}
+
+	this.add = function(fromPlanet) {
+		var player = this.get(fromPlanet.player);
+		if (player){
+			player.planets++;
+			player.units += fromPlanet.units;
+		} else {
+			var p = jQuery.extend(true, {}, fromPlanet.player);
+			p.planets = 1;
+			p.units = fromPlanet.units;
+			this.players.push(p);
+		}
+	}
+
+	this.init = function() {
+		for (var i = 0; i < gameEngine.planets.length; i++) {
+			var planet = gameEngine.planets[i];
+			this.add(planet);
+		};
+
+		this.players = this.players.sort(function(a,b) {
+			return (a.units * a.planets) - (b.units * b.planets);
+		});
+	}
+
+	this.init();
+
+	return this;
+
+}
+
+
 /**
  * Description
  * @class Computer
@@ -16,6 +76,10 @@ var Computer = function(gameEngine){
 
 	this.gameEngine = gameEngine;
 	this.events = [];
+
+	this.refreshGameStatistics = function(){
+		return new PlayerSummary();
+	}
 
 
 	/**
