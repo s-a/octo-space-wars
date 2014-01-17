@@ -13,8 +13,8 @@ var PlayerSummary = function  () {
 	    $.each(this.players, function (id, player) {
 	    	var element = $('<div><sup>' + (player.units * player.planets) + "</sup> " + player.name + '</div>');
 	    	element.css({
-	    		color: player.color.lum(0.5).hex(),
-	    		"text-shadow": gameEngine.css.glow(player.color.lum())
+	    		color: player.color.hex()// ,
+	    		//"text-shadow": gameEngine.css.glow(player.color) performance :(
 	    	});	
 	    	select.prepend(element);
 	    });  
