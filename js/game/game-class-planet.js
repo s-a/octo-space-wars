@@ -81,7 +81,7 @@ var Planet = function  (config) {
 	 * @return 
 	 */
 	this.setText = function  (){
-		shape = new THREE.TextGeometry(this.getName() + " " + this.units, {
+		shape = new THREE.TextGeometry(/*this.getName() + " " + */this.units, { // performance :(
 			font: 'helvetiker', 
 			size: 6,  
 			bevelEnabled : false,

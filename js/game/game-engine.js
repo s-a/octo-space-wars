@@ -21,7 +21,7 @@ var Player = function  (color) {
 	}
 
 	var ext = ["ions", "ons", "ans", "ians"];
-	this.name = Faker.Name.lastName() + ext.randomItem();
+	this.name = Faker.Name.lastName() + ext.random();
 	return this;
 }
 // Array Remove - By John Resig (MIT Licensed) 
@@ -32,7 +32,7 @@ Array.prototype.remove = function(from, to) {
 };
 
 
-Array.prototype.randomItem = function() {
+Array.prototype.random = function() {
 	var id = Math.floor(Math.random()*this.length);
 	return this[id];
 }
@@ -278,9 +278,11 @@ var GameEngine = function() {
 	}
 
 	this.refreshGameStatistics = function  () {
-		var stats = this.computer.refreshGameStatistics();
-		var $stats = this.dom.$stats;
-		stats.bind($stats);
+		 
+			var stats = this.computer.refreshGameStatistics();
+			var $stats = this.dom.$stats;
+			stats.bind($stats);
+		
 	}
 
 	/**
@@ -350,7 +352,7 @@ var GameEngine = function() {
 		var discTexture = THREE.ImageUtils.loadTexture( 'images/disc.png' );
 		this.uniforms = {
 			time:      { type: "f", value: 1.0 },
-			texture:   { type: "t", value: discTexture },
+			texture:   { type: "t", value: discTexture } 
 		};
 		// properties that may vary from particle to particle.
 		// these values can only be accessed in vertex shaders!
@@ -411,7 +413,7 @@ var GameEngine = function() {
 	 * @return MemberExpression
 	 */
 	this.randomPlanet = function(ignore) {
-		if (!ignore) ignore = [];
+		if (!ignore) ignore = [0];
 		var result = null;
 		ignore.push(null);
 		var planetId = null;
@@ -440,7 +442,8 @@ var GameEngine = function() {
 
 
 	this.computer = new Computer(this);
- 
+ 	this.Player = Player;
+ 	this.Planet = Planet;
 	
 
 	/**
@@ -580,7 +583,7 @@ var GameEngine = function() {
 		
 		if (a.color) {
 			c1 = a.color.hex();
-			c2 = a.color;
+			c2 = new Color(a.color);
 		} else {
 			c2 = new Color(c1);
 		}
@@ -599,6 +602,13 @@ var GameEngine = function() {
 
 	this.material = [];
 	this.sound.sample = [];
+	this.soundSystem = {
+		engine:this
+	};
+	this.soundSystem.play = function(sample, volume) {
+		var snd = this.engine.sound.sample[sample];
+		if (snd) snd.play(volume || 1);
+	}
 }
 
 /**

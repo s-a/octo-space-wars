@@ -1,5 +1,22 @@
 
-var PlanetaryEvent = function(){
+var interPlanetaryEvents = function(gameEngine){
+
+	var events = [];
+
+	this.add = function(e) {
+		events.push(e);
+	}
+
+	this.item = function(i) {
+		return events[i];
+	}
+
+	this.execute = function(index) {
+		var event = this.item(index);
+		if (!event) event = events.random();
+		jQuery.proxy(event.execute, gameEngine)(gameEngine);
+	}
+
 	return this;
 }
 
@@ -15,6 +32,8 @@ var PlayerSummary = function  () {
 	    	element.css({
 	    		color: player.color.hex()// ,
 	    		//"text-shadow": gameEngine.css.glow(player.color) performance :(
+	    	}).click(function  (argument) {
+				//gameEngine.cam.move(s, a, p)
 	    	});	
 	    	select.prepend(element);
 	    });  
@@ -48,7 +67,7 @@ var PlayerSummary = function  () {
 	}
 
 	this.init = function() {
-		for (var i = 0; i < gameEngine.planets.length; i++) this.addFromPlanet(gameEngine.planets[i]);
+		for (var i = 1; i < gameEngine.planets.length; i++) this.addFromPlanet(gameEngine.planets[i]);
 		this.players = this.players.sort(function(a,b) {
 			return (a.units * a.planets) - (b.units * b.planets);
 		});
@@ -57,7 +76,6 @@ var PlayerSummary = function  () {
 	this.init();
 
 	return this;
-
 }
 
 
@@ -73,7 +91,7 @@ var Computer = function(gameEngine){
 	var currentPlayer = null;
 
 	this.gameEngine = gameEngine;
-	this.events = [];
+	 
 
 	this.refreshGameStatistics = function(){
 		return new PlayerSummary();
@@ -85,9 +103,7 @@ var Computer = function(gameEngine){
 	 * @method desaster
 	 * @return 
 	 */
-	this.desaster = function() {
-		this.events[0]();
-	}
+	this.interPlanetaryEvents = new interPlanetaryEvents(gameEngine);
 
 	/**
 	 * Description
@@ -141,12 +157,17 @@ var Computer = function(gameEngine){
 	 * @return 
 	 */
 	this.play = function  () {
- 
 		var source = this.nextPlayerPlanet();
-		var target = this.weakestEnemy(source);
-		if (!source.flyto(target, 10)) {
-			alert("done!");
-		} 
+		if (source){
+			var target = this.weakestEnemy(source);
+			if (!source.flyto(target, 10)) {
+				alert("done!");
+				gameEngine.computer.interPlanetaryEvents.execute();
+			};
+		} else {
+				alert("done2!");
+				gameEngine.computer.interPlanetaryEvents.execute();
+		}
 	}
 
 	return this;

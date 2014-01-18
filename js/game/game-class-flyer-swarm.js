@@ -109,6 +109,15 @@ var FlyerSwarm = function(gameEngine, config, callback){
 	}
 
 	for (var i = 0; i < count; i++) this.flyer.push(new Flyer(gameEngine, this, config));
+
+		// TODO: change flyer color to custom players color
+	// var att = jQuery.extend({}, gameEngine.attributes);
+ // 	var playerColor = config.source.player.color;
+ // 	var flyerColor = att.customColor.value[0];
+	// flyerColor.r = playerColor.r;
+	// flyerColor.g = playerColor.g;
+	// flyerColor.b = playerColor.b;
+	
 	var shaderMaterial = new THREE.ShaderMaterial({
 		uniforms: 		gameEngine.uniforms,
 		attributes:     gameEngine.attributes,
@@ -152,7 +161,7 @@ var FlyerSwarm = function(gameEngine, config, callback){
 							gameEngine.alert({
 								type: "success",
 								seconds: 3,
-								msg:"A planet was conquered!",
+								msg:"A planet was conquered by the " + this.source.player.name + "!",
 								color: this.source.player.color
 							});
 						}

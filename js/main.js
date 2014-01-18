@@ -50,11 +50,11 @@ $(function() {
 					gameEngine.alert({
 						type: "fatal",
 						seconds: 4,
-						msg:"Commander!<br>We are on red alert!<br>All systems are ready ..."
+						msg:"Commander!<br>We are on red alert!<br>All systems are ready.<br>We jump to the central command point now ..."
 					}, function() {
 
 					 	gameEngine.sound.sample["tng_warp4_clean"].play();
-						gameEngine.cam.move(gameEngine.planet(0), gameEngine.planet(0), gameEngine.planet(0), function(){
+						//gameEngine.cam.move(gameEngine.planet(0), gameEngine.planet(0), gameEngine.planet(0), function(){
 							gameEngine.sound.sample["computer_work_beep_simple"].play();
 
 							gameEngine.cam.move({position:{x:3100,y:0,z:0},config:{size:10}}, gameEngine.planet(0), gameEngine.planet(0), function(){
@@ -69,10 +69,10 @@ $(function() {
 									msg:"Foreign powers fall into our system ...<br>Show no mercy!<br>Defend the habitat of our civilization and destroy them!<br><br>Good luck... (press 'h' for help)"
 								});
 								window.setTimeout(function(){
-								 	gameEngine.computer.desaster();
-								}, 1000*20);
+								 	gameEngine.computer.interPlanetaryEvents.execute();
+								}, 1000*0);
 							});
-						});
+						//});
 					});
 				},6000);
 			});

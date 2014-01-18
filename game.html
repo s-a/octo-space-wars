@@ -12,12 +12,12 @@
 </head>
 <body>
 
- 	<div id="infoButton"></div> 
+ 	<div id="infoButton"></div>
 	<div id="ThreeJS" style="position: absolute; left:0px; top:0px;display:none;" ></div>
 	<div id="alert" style="" class="alert-fatal"></div>
   	<div id="topLoader">loading space...</div>
- 	<div id="stats">loading statistics...</div>	
- 
+ 	<div id="stats">loading statistics...</div>
+
 
 	<script src="js/Three.js"></script>
 	<script src="js/Detector.js"></script>
@@ -68,23 +68,29 @@
 	<script src="js/game/game-data.js"></script>
 	<script src="js/main.js"></script>
 	<script type="text/javascript">
-		var alienMachineInvasion = function() {
+		var alienMachineInvasion = function(engine) {
 			var neonRed = new Color("#FF0000");
-			gameEngine.alert({
+		 	var target = engine.randomPlanet([0,1]);
+		 	debugger;
+		 	var source = new engine.Planet(randomPlanetMeta());
+
+			engine.alert({
 				seconds: 6,
 				msg:"Machines invading our solar system!",
 				color: neonRed
 			});
-		 	gameEngine.sound.sample["system_alarm"].play();
- 
-		 	var source = new Planet(randomPlanetMeta()); 
-		 	var target = gameEngine.randomPlanet([0]);
-		 	source.player = new Player("#FF0000");
+
+		 	source.player = new engine.Player("#FF0000");
 		 	source.player.name = "Machines from outer space";
-			source.flyto(target, gameEngine.config.alienStrenth, 600);
+
+			source.flyto(target, engine.config.alienStrenth, 600);
+		 	engine.soundSystem.play("system_alarm");
 		}
 
-		gameEngine.computer.events.push(alienMachineInvasion);
+		gameEngine.computer.interPlanetaryEvents.add({
+			execute : alienMachineInvasion
+		});
+		//gameEngine.computer.interPlanetaryEvents.execute();
 	</script>
 </body>
 </html>
