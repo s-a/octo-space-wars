@@ -56,13 +56,13 @@ var GameEngineCamera = function  (argument) {
 	 	sourcePosition = gameEngine.camera.position;
 		spline = new THREE.SplineCurve3([
 		   new THREE.Vector3(sourcePosition.x,sourcePosition.y,sourcePosition.z),
-		   new THREE.Vector3(sourcePosition.x+ 5,sourcePosition.y+ 5,sourcePosition.z- 2),
-		   new THREE.Vector3(sourcePosition.x-115,sourcePosition.y- 115,sourcePosition.z+ 222),
-		   new THREE.Vector3(sourcePosition.x- 120,sourcePosition.y-  110,sourcePosition.z-  222),
+		   new THREE.Vector3(sourcePosition.x+ 5,sourcePosition.y+ 5,sourcePosition.z-30),
+		   new THREE.Vector3(sourcePosition.x+ 5,sourcePosition.y+ 5,sourcePosition.z+150),
+		   new THREE.Vector3(20,110,111),
 		   new THREE.Vector3(targetPosition.x + target.config.size*4,targetPosition.y - target.config.size*4, targetPosition.z + target.config.size*4)
 		]);
 
-		var splinePoints = spline.getPoints(450);
+		var splinePoints = spline.getPoints(680);
 
 		if (false) {
 			flowI = 0;

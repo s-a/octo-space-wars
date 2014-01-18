@@ -17,6 +17,7 @@
 	<div id="alert" style="" class="alert-fatal"></div>
   	<div id="topLoader">loading space...</div>
  	<div id="stats">loading statistics...</div>
+ 	<a href="javascript:void(0);" onclick="gameEngine.computer.interPlanetaryEvents.execute();">EVENT</a>
 
 
 	<script src="js/Three.js"></script>
@@ -82,8 +83,8 @@
 
 		 	source.player = new engine.Player("#FF0000");
 		 	source.player.name = "Machines from outer space";
-
-			source.flyto(target, engine.config.alienStrenth, 600);
+		 	source.units = engine.config.alienStrenth * 1000;
+			source.flyto(target, engine.config.alienStrenth, 200);
 		 	engine.soundSystem.play("system_alarm");
 		}
 

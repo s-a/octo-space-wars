@@ -25,9 +25,9 @@ var randomPlanetMeta = function  () {
 	return	{
 		id : ___id,
 		parent: 0,
-		surfaceTexture:'mercurymap.jpg',
+		surfaceTexture: 'mercurymap.jpg',
 		distance: ___distance,
-		yearInDays:Math.floor(Math.random()*1000)+200,
+		yearInDays:Math.floor(Math.random()*1000)+100,
 		size:(Math.floor(Math.random()*150000)+2) 
 	}
 }

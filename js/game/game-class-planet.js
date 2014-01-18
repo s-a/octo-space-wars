@@ -37,7 +37,7 @@ var Planet = function  (config) {
 		var ii = 0;
 		var result = false;
  		launchSpeedInMilliseconds = launchSpeedInMilliseconds || 500;
-		if (target && source.units > 1){
+		if (source.units > 1){
 			var i = window.setInterval(function() {
 				if (ii===count || source.units > 1){
 					new FlyerSwarm(gameEngine, {

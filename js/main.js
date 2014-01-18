@@ -50,7 +50,7 @@ $(function() {
 					gameEngine.alert({
 						type: "fatal",
 						seconds: 4,
-						msg:"Commander!<br>We are on red alert!<br>All systems are ready.<br>We jump to the central command point now ..."
+						msg:"Commander!<br>We are on red alert!<br>All systems are ready.<br>We jump to the central command coordinates now ..."
 					}, function() {
 
 					 	gameEngine.sound.sample["tng_warp4_clean"].play();
@@ -70,7 +70,7 @@ $(function() {
 								});
 								window.setTimeout(function(){
 								 	gameEngine.computer.interPlanetaryEvents.execute();
-								}, 1000*0);
+								}, 1000*20);
 							});
 						//});
 					});
