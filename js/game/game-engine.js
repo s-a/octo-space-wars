@@ -337,7 +337,7 @@ var GameEngine = function() {
 			var skyGeometry = new THREE.CubeGeometry( 5000, 5000, 5000 );
 
 			var materialArray = [];
-			for (var i = 0; i < 600; i++)
+			for (var i = 0; i < directions.length; i++)
 				materialArray.push( new THREE.MeshBasicMaterial({
 					map: THREE.ImageUtils.loadTexture( imagePrefix + directions[i] + imageSuffix ),
 					side: THREE.BackSide
