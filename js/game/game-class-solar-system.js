@@ -21,4 +21,4 @@ var SolarSystem = function  (config) {
 	};
  	
  	return this;
-}
+};

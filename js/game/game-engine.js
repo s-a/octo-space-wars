@@ -385,11 +385,11 @@ var GameEngine = function() {
 
 					handle_update( result, Math.floor( count/total ) );
 
-				}
+				};
 
 		this.refreshGameStatistics();
 
-	}
+	};
 
 	/**
 	 * Description
@@ -403,7 +403,7 @@ var GameEngine = function() {
 
 		window.setInterval(function() {
 			gameEngine.refreshGameStatistics();
-		}, 1000 * 20)
+		}, 1000 * 20);
 	};
 
 	/**
@@ -420,7 +420,7 @@ var GameEngine = function() {
 		while(ignore.indexOf(planetId) !== -1) planetId = Math.floor(Math.random()*this.planets.length);
 		this.planets[planetId].id = planetId;
 		return this.planets[planetId];
-	}
+	};
 
 	/**
 	 * Description
@@ -438,7 +438,7 @@ var GameEngine = function() {
 		raycaster.set( newPosition, vector.sub( newPosition ).normalize() );
 		var intersects = raycaster.intersectObjects( this.scene.children, true );
 	  	return (intersects.length > 0) && (intersects[0].distance <= distance);
-	}
+	};
 
 
 	this.computer = new Computer(this);
@@ -454,7 +454,7 @@ var GameEngine = function() {
 	 */
 	var degInRad = function(deg) {
 	    return deg * Math.PI / 180;
-	}
+	};
 
 	/**
 	 * Description
@@ -480,7 +480,7 @@ var GameEngine = function() {
 
 			this.cam.look();
 		}
-	}
+	};
 
 
 
@@ -532,14 +532,14 @@ var GameEngine = function() {
 		for (var s = 0; s < this.swarms.length; s++) {
 			var swarm = this.swarms[s];
 			swarm.move(s%20===0);
-		};
+		}
 
 		for (var i = 0; i < this.planets.length; i++) {
 			var planet = this.planets[i];
 			var pos = planet.position(this.uniforms.time.value);
 			planet.move(pos.x,pos.y,pos.z);
-		};
-	}
+		}
+	};
 
 	/**
 	 * Description
@@ -549,7 +549,7 @@ var GameEngine = function() {
 	 */
 	this.timeMachine = function(elapsedTime){
 		return 0.025 * elapsedTime || gameEngine.clock.getElapsedTime();
-	}
+	};
 
 	/**
 	 * Description
@@ -564,8 +564,8 @@ var GameEngine = function() {
 
 	this.css = {};
 	this.css.glow = function(color){
-		return "0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px " + color.hex() + ", 0 0 70px " + color.hex() + ", 0 0 80px " + color.hex() + ", 0 0 100px " + color.hex() + ", 0 0 150px " + color.hex()
-	}
+		return "0 0 10px #fff, 0 0 20px #fff, 0 0 30px #fff, 0 0 40px " + color.hex() + ", 0 0 70px " + color.hex() + ", 0 0 80px " + color.hex() + ", 0 0 100px " + color.hex() + ", 0 0 150px " + color.hex();
+	};
 
 	var msgTimer = null;
 	/**
@@ -608,8 +608,8 @@ var GameEngine = function() {
 	this.soundSystem.play = function(sample, volume) {
 		var snd = this.engine.sound.sample[sample];
 		if (snd) snd.play(volume || 1);
-	}
-}
+	};
+};
 
 /**
  * Description

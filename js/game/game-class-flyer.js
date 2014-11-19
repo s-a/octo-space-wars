@@ -36,10 +36,10 @@ var Flyer = function(gameEngine, swarm, config, target) {
 	 */
 	this.computeSecureTrack = function  () {
 		// body...
-	}
+	};
 
 	swarm.particleGeometry.vertices.push( new THREE.Vector3(0,0,0) );
-	var particleCount = swarm.particleGeometry.vertices.length
+	var particleCount = swarm.particleGeometry.vertices.length;
 	for( var v = 0; v < particleCount; v++ ){ 
 		gameEngine.attributes.customColor.value[ v ] = new THREE.Color().setHSL( 1 - v / particleCount, 1.0, 0.5 );
 		gameEngine.attributes.customOffset.value[ v ] = 1 ; // not really used in shaders, move elsewhere
@@ -52,7 +52,7 @@ var Flyer = function(gameEngine, swarm, config, target) {
 	 */
 	this.position = function() {
 
-	}
+	};
 
 	//swarm.flyer.push(this);
 	return this;

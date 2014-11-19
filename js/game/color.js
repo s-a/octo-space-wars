@@ -26,7 +26,7 @@
 		        color += letters[Math.round(Math.random() * 15)];
 		    }
 		    return new Color(color);
-		}
+		};
 
 		/**
 		 * Description
@@ -186,7 +186,7 @@
 		 * @return ThisExpression
 		 */
 		this.lum = function(lum) {
-			var hex = ColorLuminance(this.hex(), 0)
+			var hex = ColorLuminance(this.hex(), 0);
 			hex = ColorLuminance(hex, lum);
 			var newColor = new Color(hex);
 			this.assignColor(newColor);
@@ -218,7 +218,7 @@
 			}
 
 			return rgb;
-		}
+		};
 
 		/**
 		 * Description

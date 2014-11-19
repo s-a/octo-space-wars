@@ -19,7 +19,7 @@ var ___distance = 20;
  * @return ObjectExpression
  */
 var randomPlanetMeta = function  () {
-	var prevPlanet = GAMEDATA[0]
+	var prevPlanet = GAMEDATA[0];
 	___id++;
 	___distance += (prevPlanet.size/100000) + Math.floor(Math.random()*100)+10;
 	return	{
@@ -29,9 +29,9 @@ var randomPlanetMeta = function  () {
 		distance: ___distance,
 		yearInDays:Math.floor(Math.random()*1000)+100,
 		size:(Math.floor(Math.random()*150000)+2) 
-	}
-}
+	};
+};
 
 for (var i = 0; i < 15; i++) {
 	GAMEDATA.push(randomPlanetMeta());
-};
+}

@@ -9,7 +9,11 @@ var Planet = function  (config) {
  	config = config || {id:-1};
  	this.id = config.id;
 	this.config = config;
-	if (window.Player) {this.player = new Player()} else { this.player = {color:new Color("#000000")}};
+	if (window.Player) {
+		this.player = new Player();
+	} else { 
+		this.player = {color:new Color("#000000")};
+	}
 	this.units = (config.id === 1 ? 1000 : (config.id%2===0 ? 100 : 10));
 
  	/**
@@ -22,7 +26,7 @@ var Planet = function  (config) {
 		return timestamp.toFixed(2).replace(/./g, function(c, i, a) {
 		    return i && c !== "-" && !((a.length - i) % 6) ? '/' + c : c;
 		}).replace(".00","");
- 	}
+ 	};
 
  	/**
 	  * Description
@@ -62,7 +66,7 @@ var Planet = function  (config) {
 		}
 
 		return result;
- 	}
+ 	};
  	
 	/**
 	 * Description
@@ -71,7 +75,7 @@ var Planet = function  (config) {
 	 */
 	this.getName = function(){ 
 		return config.name || this.player.name;
-	}
+	};
 
 	var shape;
    
@@ -88,18 +92,20 @@ var Planet = function  (config) {
 			bevelEnabled : false,
 			height : 0 
 		});
-
+		var oldpos ;
 		if (this.text) {
-			var oldpos = this.text.position;
+			oldpos = this.text.position;
 			gameEngine.scene.remove(this.text);
 		}
 		
 	  	var newText = new THREE.Mesh(shape, new THREE.MeshBasicMaterial({color: this.player.color.hex(), opacity: 0.8 }) );
-	  	if (oldpos) newText.position.set(oldpos.x, oldpos.y, oldpos.z);
+	  	if (oldpos) {
+	  		newText.position.set(oldpos.x, oldpos.y, oldpos.z);
+	  	}
 	  	if (gameEngine.camera) newText.lookAt(gameEngine.camera.position);
 	  	this.text = newText;
  	  	//textMesh.userData = this;
-	}
+	};
 
 	if (!config.isSun){
 		this.setText();
@@ -164,7 +170,7 @@ var Planet = function  (config) {
 		this.atmosphere = atmosphere;
 
 		gameEngine.refreshGameStatistics();
-	}
+	};
 
 	/**
 	 * Description
@@ -177,7 +183,7 @@ var Planet = function  (config) {
 		var sunSize = 1392000;
 		var s = ((size/2 )/(sunSize/2 )*bigSunSize)+10;
 		return s;
-	}
+	};
 
  	config.size = this.getSize(config.size);
 	this.conquer(this.player);
@@ -200,7 +206,7 @@ var Planet = function  (config) {
 		var d2 = (t.y-s.y)*(t.y-s.y);
 		var d3 = (t.z-s.z)*(t.z-s.z);
 		return Math.sqrt(d1+d2+d3);
-	}
+	};
 
 	/**
 	 * Description
@@ -218,7 +224,7 @@ var Planet = function  (config) {
 		);
 
 		return pos;
-	}
+	};
 
 	/**
 	 * Description
@@ -235,7 +241,7 @@ var Planet = function  (config) {
 			this.text.position.set( x - config.size, y - (config.size*1.5), z - config.size );
 			this.text.lookAt(gameEngine.camera.position);
 		}
-	}
+	};
 
  
 
@@ -256,14 +262,14 @@ var Planet = function  (config) {
 		surface.userData = {planet:this};
 
 	 	if (light) scene.add( light );
-	}
+	};
 
 	var Economic  = function(planet) {
 		var self = this;
 		this.tick = function() {
 			planet.units = planet.units + 1;
  			planet.setText();
-		}
+		};
 
 		this.start = function() {
 			console.log(planet);
@@ -271,12 +277,12 @@ var Planet = function  (config) {
 				self.tick();
 			}, 60000);
 			return self;
-		}
+		};
 
 
-	}
+	};
 
 	this.economic = new Economic(this).start();
 
 	return this;
-}
+};

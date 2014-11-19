@@ -5,20 +5,20 @@ var interPlanetaryEvents = function(gameEngine){
 
 	this.add = function(e) {
 		events.push(e);
-	}
+	};
 
 	this.item = function(i) {
 		return events[i];
-	}
+	};
 
 	this.execute = function(index) {
 		var event = this.item(index);
 		if (!event) event = events.random();
 		jQuery.proxy(event.execute, gameEngine)(gameEngine);
-	}
+	};
 
 	return this;
-}
+};
 
 
 var PlayerSummary = function  () {
@@ -37,7 +37,7 @@ var PlayerSummary = function  () {
 	    	});	
 	    	select.prepend(element);
 	    });  
-	}
+	};
 
 	this.get = function(player) {
 		var result = null;
@@ -48,9 +48,9 @@ var PlayerSummary = function  () {
 				result = p;
 				break;
 			}
-		};
+		}
 		return result;
-	}
+	};
 
 	this.addFromPlanet = function(fromPlanet) {
 		var player = this.get(fromPlanet.player);
@@ -64,19 +64,19 @@ var PlayerSummary = function  () {
 			p.units = fromPlanet.units;
 			this.players.push(p);
 		}
-	}
+	};
 
 	this.init = function() {
 		for (var i = 1; i < gameEngine.planets.length; i++) this.addFromPlanet(gameEngine.planets[i]);
 		this.players = this.players.sort(function(a,b) {
 			return (a.units * a.planets) - (b.units * b.planets);
 		});
-	}
+	};
 
 	this.init();
 
 	return this;
-}
+};
 
 
 /**

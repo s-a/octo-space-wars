@@ -16,7 +16,7 @@ var GameEngineCamera = function  (argument) {
 	 */
 	this.look = function  () {
 		gameEngine.camera.lookAt(this.lookAt);
-	}
+	};
 
 	/**
 	 * Description
@@ -64,11 +64,12 @@ var GameEngineCamera = function  (argument) {
 		var splinePoints = spline.getPoints(680);
 
 		if (false) {
+			var i;
 			flowI = 0;
-			for(var i = 0; i < splinePoints.length; i++){
+			for(i = 0; i < splinePoints.length; i++){
 			    geometry.vertices.push(splinePoints[i]);
 			}
-			for(var i = 0; i < splinePoints.length; i++){
+			for(i = 0; i < splinePoints.length; i++){
 			    geometry.vertices.push(splinePoints[i]);
 			}
  	 		line = new THREE.Line(geometry, material);
@@ -78,7 +79,7 @@ var GameEngineCamera = function  (argument) {
 
 		this.route = splinePoints;
 		return this;
-	}
+	};
 
 	return this;
-}
+};

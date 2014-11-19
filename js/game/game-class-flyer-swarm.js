@@ -18,8 +18,7 @@ var FlyerSwarm = function(gameEngine, config, callback){
 	var numPoints = 400;
 	var sourcePosition;
 
-
-	var  targetHitTime;
+ 
 	var material = new THREE.LineBasicMaterial({
 	    color: config.source.player.color.hex(),
 	    transparent: true,
@@ -43,8 +42,8 @@ var FlyerSwarm = function(gameEngine, config, callback){
 	 */
 	var speed = function() {
 		// body...
-	}
-	var distance;
+	};
+ 
 
 	/**
 	 * Description
@@ -76,11 +75,12 @@ var FlyerSwarm = function(gameEngine, config, callback){
 			]);
 			splinePoints = spline.getPoints(distance);
 			flowI = 0;
-			for(var i = 0; i < splinePoints.length; i++){
+			var i;
+			for(i = 0; i < splinePoints.length; i++){
 			    geometry.vertices.push(splinePoints[i]);
 			}
 			if (drawline) {
-				for(var i = 0; i < splinePoints.length; i++){
+				for(i = 0; i < splinePoints.length; i++){
 				    geometry.vertices.push(splinePoints[i]);
 				}
 	 	 		line = new THREE.Line(geometry, material);
@@ -97,16 +97,19 @@ var FlyerSwarm = function(gameEngine, config, callback){
 		var point = Math.floor(xx);
 		//document.title = xx;
 		var vPoint = splinePoints[point+(index)];
+		var x;//+ ((index*2) + index%2)*Math.sin(uniforms.time.value);
+		var y;//+ (index/2)/t0*0.025;
+		var z;//+ vPoint.y%2+index/2.5;
 		if (vPoint){
-			var x = vPoint.x ;//+ ((index*2) + index%2)*Math.sin(uniforms.time.value);
-			var y = vPoint.y ;//+ (index/2)/t0*0.025;
-			var z = vPoint.z ;//+ vPoint.y%2+index/2.5;
+			x = vPoint.x ;//+ ((index*2) + index%2)*Math.sin(uniforms.time.value);
+			y = vPoint.y ;//+ (index/2)/t0*0.025;
+			z = vPoint.z ;//+ vPoint.y%2+index/2.5;
 		} else {
 		}
 		
 		//		document.title = targetHitTime +","+ gameEngine.timeMachine()*0.025 + (gameEngine.timeMachine()*0.025>targetHitTime);
 		return new THREE.Vector3(x,y,z);
-	}
+	};
 
 	for (var i = 0; i < count; i++) this.flyer.push(new Flyer(gameEngine, this, config));
 
@@ -181,12 +184,12 @@ var FlyerSwarm = function(gameEngine, config, callback){
 						if (s.id === this.id) gameEngine.swarms.remove(i);
 						// gameEngine.refreshGameStatistics(); performance :( 
 						break;
-					};
+					}
 				}
 
 			}
 		}
-	}
+	};
 
 	gameEngine.swarms.push(this);
 	return this;
