@@ -5,7 +5,7 @@ var gameConfig =  {
 		color   : 0x66FF33
 	},
 	alienStrenth : 500
-}
+};
 /**
  * Description
  * @class Player
@@ -23,7 +23,7 @@ var Player = function  (color) {
 	var ext = ["ions", "ons", "ans", "ians"];
 	this.name = Faker.Name.lastName() + ext.random();
 	return this;
-}
+};
 // Array Remove - By John Resig (MIT Licensed) 
 Array.prototype.remove = function(from, to) {
   var rest = this.slice((to || from) + 1 || this.length);
@@ -35,7 +35,7 @@ Array.prototype.remove = function(from, to) {
 Array.prototype.random = function() {
 	var id = Math.floor(Math.random()*this.length);
 	return this[id];
-}
+};
 
 /**
  * Description
@@ -48,7 +48,7 @@ var GameEngine = function() {
 	var self = this;
 	var container, renderer, controls, stats;
 	var keyboard = new THREEx.KeyboardState();
-	var mouse = new THREE.Vector2() , INTERSECTED;;
+	var mouse = new THREE.Vector2() , INTERSECTED;
 	var projector = new THREE.Projector();
 	var raycaster = new THREE.Raycaster();
 
@@ -71,7 +71,7 @@ var GameEngine = function() {
 		source.src = window.location.pathname.replace("game.html", "") + 'sound/track' + (Math.floor(Math.random()*2)+1 /*track length*/) + '.mp3';
 		audio.appendChild(source);
 		return audio;
-	}
+	};
 
 	/**
 	 * Description
@@ -92,7 +92,7 @@ var GameEngine = function() {
 		audio.appendChild(source);
 
 		return audio;
-	}
+	};
 
 	this.sound.music = new this.sound.Music();
 
@@ -114,9 +114,9 @@ var GameEngine = function() {
 			   new THREE.Vector3(setup.source.x+40,setup.source.y-20,setup.source.z+40),
 			   new THREE.Vector3(setup.target.x,setup.target.y,setup.target.z)
 			]).getPoints(setup.steps || 1000);
-		}
+		};
 		return this;
-	}
+	};
 
 	this.navigation = new Navigation();
 
@@ -130,7 +130,7 @@ var GameEngine = function() {
 		for (var i = 0; i < this.planets.length; i++) {
 			var planet = this.planets[i];
 			planet.render(this.scene);
-		};
+		}
 
 
 
@@ -163,7 +163,7 @@ var GameEngine = function() {
 
 
 		renderer.render( this.scene, this.camera );
-	}
+	};
 
 	/**
 	 * Description
@@ -175,7 +175,7 @@ var GameEngine = function() {
 		event.preventDefault();
 		mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
 		mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-	}
+	};
 
 	this.cam = new GameEngineCamera();
 
@@ -203,7 +203,7 @@ var GameEngine = function() {
 			var target = gameEngine.randomPlanet(exclude);
 			source.flyto(target, 10);
 		}
-	}
+	};
 
 	/**
 	 * Description
@@ -251,7 +251,7 @@ var GameEngine = function() {
 				currentIndex++;
 				if (update) update(100/(sounds.length+materials.length)*currentIndex);
 			});
-		};
+		}
 
 
 		/**
@@ -270,12 +270,12 @@ var GameEngine = function() {
 					if (update) update(100/(sounds.length+materials.length)*currentIndex);
 					if (all===0) done();
 				});
-			};
+			}
 		};
 
 
 		//
-	}
+	};
 
 	this.refreshGameStatistics = function  () {
 		 
@@ -283,7 +283,7 @@ var GameEngine = function() {
 			var $stats = this.dom.$stats;
 			stats.bind($stats);
 		
-	}
+	};
 
 	/**
 	 * Description
