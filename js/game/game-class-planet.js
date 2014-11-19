@@ -36,6 +36,7 @@ var Planet = function  (config) {
 		var source = this;
 		var ii = 0;
 		var result = false;
+		count = count || source.units - 1;
  		launchSpeedInMilliseconds = launchSpeedInMilliseconds || 500;
 		if (source.units > 1){
 			var i = window.setInterval(function() {
@@ -245,6 +246,7 @@ var Planet = function  (config) {
 	 * @return 
 	 */
 	this.render = function  (scene) {
+		this.scene = scene;
 	  	scene.add( this.planet );
 	 	scene.add( this.atmosphere );
  		scene.remove(this.text);
@@ -255,6 +257,26 @@ var Planet = function  (config) {
 
 	 	if (light) scene.add( light );
 	}
+
+	var Economic  = function(planet) {
+		var self = this;
+		this.tick = function() {
+			planet.units = planet.units + 1;
+ 			planet.setText();
+		}
+
+		this.start = function() {
+			console.log(planet);
+			window.setInterval(function() {
+				self.tick();
+			}, 60000);
+			return self;
+		}
+
+
+	}
+
+	this.economic = new Economic(this).start();
 
 	return this;
 }

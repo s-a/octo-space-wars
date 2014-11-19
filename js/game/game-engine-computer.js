@@ -89,7 +89,7 @@ var PlayerSummary = function  () {
 var Computer = function(gameEngine){
 	var currentPlayerIndex = 1;
 	var currentPlayer = null;
-
+	var self = this;
 	this.gameEngine = gameEngine;
 	 
 
@@ -126,7 +126,7 @@ var Computer = function(gameEngine){
 	this.weakestEnemy = function(currentPlanet) {
 		for (var i = 1; i < this.gameEngine.planets.length; i++) {
 			var planet = this.gameEngine.planet(i);
-			if (this.isEnemy(currentPlanet.player, planet)) return planet;
+			if (this.isEnemy(currentPlanet.player, planet) && planet.units>0) return planet;
 		};
 	}
 
@@ -137,7 +137,7 @@ var Computer = function(gameEngine){
 	 */
 	this.nextPlayerPlanet = function() {
 
-		if (currentPlayerIndex+1 === this.gameEngine.planets.length-1) currentPlayerIndex = 0;
+		if (currentPlayerIndex+1 === this.gameEngine.planets.length-1) currentPlayerIndex = 1;
 		for (var i = currentPlayerIndex+1; i < this.gameEngine.planets.length-1; i++) {
 			var planet = this.gameEngine.planet(i);
 			if ( this.isEnemy(currentPlayer, planet)){
@@ -160,15 +160,18 @@ var Computer = function(gameEngine){
 		var source = this.nextPlayerPlanet();
 		if (source){
 			var target = this.weakestEnemy(source);
-			if (!source.flyto(target, 10)) {
-				alert("done!");
+			document.title = source.player.name + "->" + target.player.name;
+			if (!source.flyto(target, source.units/2)) {
 				gameEngine.computer.interPlanetaryEvents.execute();
 			};
 		} else {
-				alert("done2!");
 				gameEngine.computer.interPlanetaryEvents.execute();
 		}
 	}
+
+	window.setInterval(function  () {
+		 self.play();
+	}, 10000);
 
 	return this;
 }
